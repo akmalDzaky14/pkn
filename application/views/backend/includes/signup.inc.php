@@ -91,7 +91,7 @@ if (isset($_POST['submit'])) {
                         exit();
                     } else {
                         //upload form register ke database
-                        $sql = "INSERT INTO userlist (email, nama_belakang, nama_depan, password, uid) VALUES (?,?,?,?,?)";
+                        $sql = "INSERT INTO userlist (email,nama_depan ,nama_belakang , password, uid) VALUES (?,?,?,?,?)";
                         $stmt = $this->db->call_function('stmt_init', $conn);
                         if (!$this->db->call_function('stmt_prepare', $stmt, $sql)) {
                             $register = base_url("index.php/backend/register?error=sqlerror");
@@ -118,6 +118,7 @@ if (isset($_POST['submit'])) {
         mysqli_close($conn);
     }
 } else {
+    //redirect saat user input tanpa klik submit
     $register = base_url("index.php/backend/register");
     header("refresh:1;url=$register");
     exit();

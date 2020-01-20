@@ -30,13 +30,19 @@
             <div class="form-row">
               <div class="col-md-6">
                 <div class="form-label-group">
-                  <input value="" type="text" name="firstname" id="firstName" class="form-control" placeholder="First name" required="required" autofocus="autofocus">
+                  <?php
+                  $fn = &$_GET['fn'];
+                  $ln = &$_GET['ln'];
+                  $uid = &$_GET['uid'];
+                  $em = &$_GET['email'];
+                  ?>
+                  <input value="<?php echo $fn; ?>" type="text" name="firstname" id="firstName" class="form-control" placeholder="First name" required="required" autofocus="autofocus">
                   <label for="firstName">First name</label>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-label-group">
-                  <input value="" type="text" name="lastname" id="lastName" class="form-control" placeholder="Last name" required="required">
+                  <input value="<?php echo $ln; ?>" type="text" name="lastname" id="lastName" class="form-control" placeholder="Last name" required="required">
                   <label for="lastName">Last name</label>
                 </div>
               </div>
@@ -44,13 +50,13 @@
           </div>
           <div class="form-group">
             <div class="form-label-group">
-              <input value="" type="text" name="uid" id="uid" class="form-control" placeholder="Username" required="required">
+              <input value="<?php echo $uid; ?>" type="text" name="uid" id="uid" class="form-control" placeholder="Username" required="required">
               <label for="uid">Username</label>
             </div>
           </div>
           <div class="form-group">
             <div class="form-label-group">
-              <input value="" type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required="required">
+              <input value="<?php echo $em; ?>" type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required="required">
               <label for="inputEmail">Email address</label>
             </div>
           </div>
@@ -71,7 +77,6 @@
             </div>
           </div>
           <input class="btn btn-primary btn-block" type="submit" name="submit" value="submit">
-          <!-- <a class="btn btn-primary btn-block" href=" //echo base_url(); index.php/backend/login">Register</a> -->
         </form>
         <div class="text-center">
           <a class="d-block small mt-3" href="<?php echo base_url(); ?>index.php/backend/login">Login Page</a>
