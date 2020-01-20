@@ -1,0 +1,124 @@
+<?php
+if (isset($_POST['submit'])) {
+    require 'dbHandler.inc.php'; //cek koneksi ke database
+    // $conn = $this->load->database();
+
+    // inisialisasi data yang di input
+    $fn = $_POST['firstname'];
+    $ln = $_POST['lastname'];
+    $username = $_POST['uid'];
+    $em = $_POST['email'];
+    $pass = $_POST['pass'];
+    $confpass = $_POST['confPass'];
+
+    // cek apakah ada yang kosong saat mengisi form register
+    if (empty($fn) || empty($ln) || empty($username) || empty($em) || empty($pass) || empty($confpass)) {
+        $register = base_url("index.php/backend/register?error=emptyFields&fn=" . $fn . "&ln=" . $ln . "&uid=" . $username . "&email=" . $em);
+        header("refresh:1;url=$register");
+        $message = "Empty Field detected, please check again!";
+        echo "<script type='text/javascript'>alert('$message');</script>";
+        exit();
+    } //cek apakah format email dan username valid
+    elseif (!filter_var($em, FILTER_VALIDATE_EMAIL) && !preg_match("/^[a-zA-Z0-9]*$/", $username)) {
+        $register = base_url("index.php/backend/register?error=invalidEmail&fn=" . $fn . "&ln=" . $ln);
+        header("refresh:1;url=$register");
+        $message = "Invalid username and email, please check again!";
+        echo "<script type='text/javascript'>alert('$message');</script>";
+        exit();
+    } //cek  apakah format email valid
+    elseif (!filter_var($em, FILTER_VALIDATE_EMAIL)) {
+        $register = base_url("index.php/backend/register?error=invalidEmail&fn=" . $fn . "&ln=" . $ln . "&uid=" . $username);
+        header("refresh:1;url=$register");
+        $message = "Invalid email, please check again!";
+        echo "<script type='text/javascript'>alert('$message');</script>";
+        exit();
+    } // cek apakah username valid
+    elseif (!preg_match("/^[a-zA-Z0-9]*$/", $username)) {
+        $register = base_url("index.php/backend/register?error=invalidUID&fn=" . $fn . "&ln=" . $ln . "&email=" . $em);
+        header("refresh:1;url=$register");
+        $message = "Invalid username, please check again!";
+        echo "<script type='text/javascript'>alert('$message');</script>";
+        exit();
+    } //cek apakah password dan confirm password sama
+    elseif ($pass !== $confpass) {
+        $register = base_url("index.php/backend/register?error=passwodchecked&fn="  . $fn . "&ln=" . $ln . "&uid=" . $username . "&email=" . $em);
+        header("refresh:1;url=$register");
+        $message = "Invalid Password, please check again!";
+        echo "<script type='text/javascript'>alert('$message');</script>";
+        exit();
+    } //lanjut jika lolos pemeriksaan tahap 1
+    else {
+        // cek username di database
+        $sql = "SELECT uid FROM userlist WHERE uid=?";
+        $stmt = $this->db->call_function('stmt_init', $conn);
+        if (!$this->db->call_function('stmt_prepare', $stmt, $sql)) {
+            $register = base_url("index.php/backend/register?error=sqlerror");
+            header("refresh:1;url=$register");
+            $message = "SQL ERROR";
+            echo "<script type='text/javascript'>alert('$message');</script>";
+            exit();
+        } else {
+            mysqli_stmt_bind_param($stmt, 's', $username);
+            $this->db->call_function('stmt_execute', $stmt);
+            $this->db->call_function('stmt_store_result', $stmt);
+            $checkResult = $this->db->call_function('stmt_num_rows', $stmt);
+            if ($checkResult > 0) {
+                $register = base_url("index.php/backend/register?error=usernametaken&fn=" . $fn . "&ln=" . $ln . "&email=" . $em);
+                header("refresh:1;url=$register");
+                $message = "Username Alredy Taken";
+                echo "<script type='text/javascript'>alert('$message');</script>";
+                exit();
+            } else {
+                //cek email di database
+                $sql = "SELECT uid FROM userlist WHERE email=?";
+                $stmt = $this->db->call_function('stmt_init', $conn);
+                if (!$this->db->call_function('stmt_prepare', $stmt, $sql)) {
+                    $register = base_url("index.php/backend/register?error=sqlerror");
+                    header("refresh:1;url=$register");
+                    $message = "SQL ERROR";
+                    echo "<script type='text/javascript'>alert('$message');</script>";
+                    exit();
+                } else {
+                    mysqli_stmt_bind_param($stmt, 's', $em);
+                    $this->db->call_function('stmt_execute', $stmt);
+                    $this->db->call_function('stmt_store_result', $stmt);
+                    $checkResult = $this->db->call_function('stmt_num_rows', $stmt);
+                    if ($checkResult > 0) {
+                        $register = base_url("index.php/backend/register?error=emailtaken&fn=" . $fn . "&ln=" . $ln . "&uid=" . $username);
+                        header("refresh:1;url=$register");
+                        $message = "Email Alredy Taken";
+                        echo "<script type='text/javascript'>alert('$message');</script>";
+                        exit();
+                    } else {
+                        //upload form register ke database
+                        $sql = "INSERT INTO userlist (email, nama_belakang, nama_depan, password, uid) VALUES (?,?,?,?,?)";
+                        $stmt = $this->db->call_function('stmt_init', $conn);
+                        if (!$this->db->call_function('stmt_prepare', $stmt, $sql)) {
+                            $register = base_url("index.php/backend/register?error=sqlerror");
+                            header("refresh:1;url=$register");
+                            $message = "SQL ERROR";
+                            echo "<script type='text/javascript'>alert('$message');</script>";
+                            exit();
+                        } else {
+                            $hashPass = password_hash($pass,  PASSWORD_DEFAULT);
+                            mysqli_stmt_bind_param($stmt, 'sssss', $em, $fn, $ln, $hashPass, $username);
+                            $this->db->call_function('stmt_execute', $stmt);
+                            $register = base_url("index.php/backend/register?register=success");
+                            header("refresh:1;url=$register");
+                            $message = "Sign Up Success";
+                            echo "<script type='text/javascript'>alert('$message');</script>";
+                            exit();
+                        }
+                    }
+                }
+            }
+        }
+        //memutuskan koneksi dengan database
+        mysqli_stmt_close($stmt);
+        mysqli_close($conn);
+    }
+} else {
+    $register = base_url("index.php/backend/register");
+    header("refresh:1;url=$register");
+    exit();
+}

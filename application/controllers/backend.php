@@ -39,13 +39,15 @@ class backend extends CI_Controller
     }
     public function upload()
     {
+        $this->load->view('/backend/includes/dbHandler');
+    }
+    public function signup()
+    {
         $this->load->database();
-        $this->load->view('/backend/upload');
+        $this->load->view('/backend/includes/signup.inc.php');
     }
     public function tables()
     {
         $this->load->view('/backend/tables');
     }
-    
-
 }

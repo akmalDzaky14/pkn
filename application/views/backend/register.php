@@ -25,7 +25,7 @@
     <div class="card card-register mx-auto mt-5">
       <div class="card-header">Register an Account</div>
       <div class="card-body">
-        <form action="<?php echo base_url(); ?>index.php/backend/upload" method="POST">
+        <form action="<?php echo base_url(); ?>index.php/backend/signup" method="POST">
           <div class="form-group">
             <div class="form-row">
               <div class="col-md-6">
@@ -40,6 +40,12 @@
                   <label for="lastName">Last name</label>
                 </div>
               </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-label-group">
+              <input value="" type="text" name="uid" id="uid" class="form-control" placeholder="Username" required="required">
+              <label for="uid">Username</label>
             </div>
           </div>
           <div class="form-group">
