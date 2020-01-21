@@ -40,4 +40,8 @@ class Home extends CI_Controller
     {
         $this->load->view('/Upload/upload');
     }
+    public function indextext()
+    {
+        $this->load->view('/Upload/indextext');
+    }
 }
