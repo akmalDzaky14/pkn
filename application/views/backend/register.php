@@ -24,6 +24,33 @@
   <div class="container">
     <div class="card card-register mx-auto mt-5">
       <div class="card-header">Register an Account</div>
+      <div>
+        <?php
+        if (isset($_GET['error'])) {
+          if ($_GET['error'] == "emailtaken") {
+            echo '<p style="color: red; text-align: center;" class="signuperror">Email Already Taken!</p>';
+          } elseif ($_GET['error'] == "invalidEmailandUsername") {
+            echo '<p style="color: red; text-align: center;" class="signuperror">Check Email and Usernames</p>';
+          } elseif ($_GET['error'] == "emptyFields") {
+            echo '<p style="color: red; text-align: center;" class="signuperror">Fill All Fields</p>';
+          } elseif ($_GET['error'] == "invalidEmail") {
+            echo '<p style="color: red; text-align: center;" class="signuperror">Invalid Email</p>';
+          } elseif ($_GET['error'] == "invalidUID") {
+            echo '<p style="color: red; text-align: center;" class="signuperror">Use Other Username</p>';
+          } elseif ($_GET['error'] == "passwodchecked") {
+            echo '<p style="color: red; text-align: center;" class="signuperror">Password Dont Match</p>';
+          } elseif ($_GET['error'] == "sqlerror") {
+            echo '<p style="color: red; text-align: center;" class="signuperror">Something Wrong, Try Again Later</p>';
+          } elseif ($_GET['error'] == "usernametaken") {
+            echo '<p style="color: red; text-align: center;" class="signuperror">Username Already Taken, Please User Other Username</p>';
+          }
+        } elseif (isset($_GET['register'])) {
+          if ($_GET['register'] == "success") {
+            echo '<p style="color: green; text-align: center;">Register Success!</p>';
+          }
+        }
+        ?>
+      </div>
       <div class="card-body">
         <form action="<?php echo base_url(); ?>index.php/backend/signup" method="POST">
           <div class="form-group">

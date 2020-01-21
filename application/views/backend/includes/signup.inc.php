@@ -14,37 +14,27 @@ if (isset($_POST['submit'])) {
     // cek apakah ada yang kosong saat mengisi form register
     if (empty($fn) || empty($ln) || empty($username) || empty($em) || empty($pass) || empty($confpass)) {
         $register = base_url("index.php/backend/register?error=emptyFields&fn=" . $fn . "&ln=" . $ln . "&uid=" . $username . "&email=" . $em);
-        header("refresh:1;url=$register");
-        $message = "Empty Field detected, please check again!";
-        echo "<script type='text/javascript'>alert('$message');</script>";
+        header("Location: $register");
         exit();
     } //cek apakah format email dan username valid
     elseif (!filter_var($em, FILTER_VALIDATE_EMAIL) && !preg_match("/^[a-zA-Z0-9]*$/", $username)) {
         $register = base_url("index.php/backend/register?error=invalidEmail&fn=" . $fn . "&ln=" . $ln);
-        header("refresh:1;url=$register");
-        $message = "Invalid username and email, please check again!";
-        echo "<script type='text/javascript'>alert('$message');</script>";
+        header("Location: $register");
         exit();
     } //cek  apakah format email valid
     elseif (!filter_var($em, FILTER_VALIDATE_EMAIL)) {
         $register = base_url("index.php/backend/register?error=invalidEmail&fn=" . $fn . "&ln=" . $ln . "&uid=" . $username);
-        header("refresh:1;url=$register");
-        $message = "Invalid email, please check again!";
-        echo "<script type='text/javascript'>alert('$message');</script>";
+        header("Location: $register");
         exit();
     } // cek apakah username valid
     elseif (!preg_match("/^[a-zA-Z0-9]*$/", $username)) {
         $register = base_url("index.php/backend/register?error=invalidUID&fn=" . $fn . "&ln=" . $ln . "&email=" . $em);
-        header("refresh:1;url=$register");
-        $message = "Invalid username, please check again!";
-        echo "<script type='text/javascript'>alert('$message');</script>";
+        header("Location: $register");
         exit();
     } //cek apakah password dan confirm password sama
     elseif ($pass !== $confpass) {
         $register = base_url("index.php/backend/register?error=passwodchecked&fn="  . $fn . "&ln=" . $ln . "&uid=" . $username . "&email=" . $em);
-        header("refresh:1;url=$register");
-        $message = "Invalid Password, please check again!";
-        echo "<script type='text/javascript'>alert('$message');</script>";
+        header("Location: $register");
         exit();
     } //lanjut jika lolos pemeriksaan tahap 1
     else {
@@ -53,9 +43,7 @@ if (isset($_POST['submit'])) {
         $stmt = $this->db->call_function('stmt_init', $conn);
         if (!$this->db->call_function('stmt_prepare', $stmt, $sql)) {
             $register = base_url("index.php/backend/register?error=sqlerror");
-            header("refresh:1;url=$register");
-            $message = "SQL ERROR";
-            echo "<script type='text/javascript'>alert('$message');</script>";
+            header("Location: $register");
             exit();
         } else {
             mysqli_stmt_bind_param($stmt, 's', $username);
@@ -64,9 +52,7 @@ if (isset($_POST['submit'])) {
             $checkResult = $this->db->call_function('stmt_num_rows', $stmt);
             if ($checkResult > 0) {
                 $register = base_url("index.php/backend/register?error=usernametaken&fn=" . $fn . "&ln=" . $ln . "&email=" . $em);
-                header("refresh:1;url=$register");
-                $message = "Username Alredy Taken";
-                echo "<script type='text/javascript'>alert('$message');</script>";
+                header("Location: $register");
                 exit();
             } else {
                 //cek email di database
@@ -74,9 +60,7 @@ if (isset($_POST['submit'])) {
                 $stmt = $this->db->call_function('stmt_init', $conn);
                 if (!$this->db->call_function('stmt_prepare', $stmt, $sql)) {
                     $register = base_url("index.php/backend/register?error=sqlerror");
-                    header("refresh:1;url=$register");
-                    $message = "SQL ERROR";
-                    echo "<script type='text/javascript'>alert('$message');</script>";
+                    header("Location: $register");
                     exit();
                 } else {
                     mysqli_stmt_bind_param($stmt, 's', $em);
@@ -85,9 +69,7 @@ if (isset($_POST['submit'])) {
                     $checkResult = $this->db->call_function('stmt_num_rows', $stmt);
                     if ($checkResult > 0) {
                         $register = base_url("index.php/backend/register?error=emailtaken&fn=" . $fn . "&ln=" . $ln . "&uid=" . $username);
-                        header("refresh:1;url=$register");
-                        $message = "Email Alredy Taken";
-                        echo "<script type='text/javascript'>alert('$message');</script>";
+                        header("Location: $register");
                         exit();
                     } else {
                         //upload form register ke database
@@ -95,18 +77,14 @@ if (isset($_POST['submit'])) {
                         $stmt = $this->db->call_function('stmt_init', $conn);
                         if (!$this->db->call_function('stmt_prepare', $stmt, $sql)) {
                             $register = base_url("index.php/backend/register?error=sqlerror");
-                            header("refresh:1;url=$register");
-                            $message = "SQL ERROR";
-                            echo "<script type='text/javascript'>alert('$message');</script>";
+                            header("Location: $register");
                             exit();
                         } else {
                             $hashPass = password_hash($pass,  PASSWORD_DEFAULT);
                             mysqli_stmt_bind_param($stmt, 'sssss', $em, $fn, $ln, $hashPass, $username);
                             $this->db->call_function('stmt_execute', $stmt);
                             $register = base_url("index.php/backend/register?register=success");
-                            header("refresh:1;url=$register");
-                            $message = "Sign Up Success";
-                            echo "<script type='text/javascript'>alert('$message');</script>";
+                            header("Location: $register");
                             exit();
                         }
                     }
@@ -120,6 +98,6 @@ if (isset($_POST['submit'])) {
 } else {
     //redirect saat user input tanpa klik submit
     $register = base_url("index.php/backend/register");
-    header("refresh:1;url=$register");
+    header("Location: $register");
     exit();
 }
