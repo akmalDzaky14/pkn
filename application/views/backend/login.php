@@ -20,21 +20,21 @@
 </head>
 
 <body class="bg-dark">
-
+ 
   <div class="container">
     <div class="card card-login mx-auto mt-5">
       <div class="card-header">Login</div>
       <div class="card-body">
-        <form>
+        <form action="<?php echo base_url(); ?>index.php/backend/signin" method="POST">
           <div class="form-group">
             <div class="form-label-group">
-              <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="required" autofocus="autofocus">
+              <input name="inputEmail" id="inputEmail" class="form-control" placeholder="Email address" required="required" autofocus="autofocus">
               <label for="inputEmail">Email address</label>
             </div>
           </div>
           <div class="form-group">
             <div class="form-label-group">
-              <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="required">
+              <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Password" required="required">
               <label for="inputPassword">Password</label>
             </div>
           </div>
@@ -46,11 +46,12 @@
               </label>
             </div>
           </div>
-          <a class="btn btn-primary btn-block" href="<?php echo base_url(); ?>index.php/backend/index">Login</a>
+          <input class="btn btn-primary btn-block" type="submit" name="login" value="login">
         </form>
         <div class="text-center">
           <a class="d-block small mt-3" href="<?php echo base_url(); ?>index.php/backend/register">Register an Account</a>
           <a class="d-block small" href="<?php echo base_url(); ?>index.php/backend/forgot">Forgot Password?</a>
+          <a class="d-block small" href="<?php echo base_url(); ?>" class="tombol">back</a>
         </div>
       </div>
     </div>

@@ -46,6 +46,21 @@ class backend extends CI_Controller
         $this->load->database();
         $this->load->view('/backend/includes/signup.inc.php');
     }
+    public function signin()
+    {
+        $this->load->database();
+        $this->load->view('/backend/includes/login.inc.php');
+    }
+    public function logout()
+    {
+        $this->load->database();
+        $this->load->view('/backend/includes/logout.inc.php');
+    }
+    public function userLogin()
+    {
+        $this->load->database();
+        $this->load->view('/backend/includes/login.inc.php');
+    }
     public function tables()
     {
         $this->load->view('/backend/tables');
