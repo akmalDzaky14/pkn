@@ -36,4 +36,8 @@ class Home extends CI_Controller
     {
         $this->load->view('blog');
     }
+    public function upload()
+    {
+        $this->load->view('/Upload/upload');
+    }
 }
