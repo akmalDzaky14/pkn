@@ -41,9 +41,9 @@ session_start();
                                         <li>
                                             <?php
                                             if (isset($_SESSION['userID'])) {
-                                                echo "<a href=index.php/backend/logout>Logout</a>";
+                                                echo '<a href="'.base_url("index.php/backend/logout").'">Logout</a>';
                                             } else {
-                                                echo "<a href=index.php/backend/login>Login</a>";
+                                                echo '<a href="'.base_url("index.php/backend/login").'">Login</a>';
                                             }
                                             ?>
                                         </li>
