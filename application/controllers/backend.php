@@ -31,11 +31,18 @@ class backend extends CI_Controller
     }
     public function resetPasswordReq()
     {
+        $this->load->database();
         $this->load->view('/backend/includes/reset-request.inc.php');
     }
     public function resetPassword()
     {
+        $this->load->database();
         $this->load->view('/backend/reset-password');
+    }
+    public function resetPasswordValidate()
+    {
+        $this->load->database();
+        $this->load->view('/backend/includes/reset-password.inc.php');
     }
     public function login()
     {

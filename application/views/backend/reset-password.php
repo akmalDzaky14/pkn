@@ -35,20 +35,29 @@
                         echo '<p style="color: green; text-align: center;">Success, Please check your email!</p>';
                     }
                 }
+
+                $selector = $_GET["selector"];
+                $validator = $_GET["validator"];
+                if (empty($selector) || empty($validator)) {
+                    echo  '<p style="color: red; text-align: center;">Could not validate your request!</p>';
+                } else {
+                    if (ctype_xdigit($selector) !== false && ctype_xdigit($validator) !== false) {
                 ?>
-                <form action="<?php echo base_url(); ?>index.php/backend/resetPasswordReq" method="POST">
-                    <div class="form-group">
-                        <div class="form-label-group">
-                            <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Enter email address" required="required" autofocus="autofocus">
-                            <label for="inputEmail">Enter email address</label>
-                        </div>
-                    </div>
-                    <input class="btn btn-primary btn-block" type="submit" name="reset-Pass-request" value="Reset Password">
-                </form>
-                <div class="text-center">
-                    <a class="d-block small mt-3" href="<?php echo base_url(); ?>index.php/backend/register">Register an Account</a>
-                    <a class="d-block small" href="<?php echo base_url(); ?>index.php/backend/login">Login Page</a>
-                </div>
+                        <form action="<?php echo base_url(); ?>index.php/backend/resetPasswordValidate" method="POST">
+                            <div class="form-group">
+                                <div class="form-label-group">
+                                    <input type="hidden" name="selector" value="<?php echo $selector?>">
+                                    <input type="hidden" name="validator" value="<?php echo $validator?>">
+                                    <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Password" required="required" autofocus="autofocus">
+                                    <input type="password" name="password-repeat" id="password-repeat" class="form-control" placeholder="Confirm Password" required="required">
+                                </div>
+                            </div>
+                            <input class="btn btn-primary btn-block" type="submit" name="reset-pass-submit" value="Reset Password">
+                        </form>
+                <?php
+                    }
+                }
+                ?>
             </div>
         </div>
     </div>
