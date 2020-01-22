@@ -45,4 +45,8 @@ class Home extends CI_Controller
         $this->load->database();
         $this->load->view('/Upload/koneksi.php');
     }
+    public function detail()
+    {
+        $this->load->view('/Upload/detail.php');
+    }
 }
