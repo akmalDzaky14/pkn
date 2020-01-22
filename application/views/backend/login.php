@@ -20,10 +20,17 @@
 </head>
 
 <body class="bg-dark">
- 
+
   <div class="container">
     <div class="card card-login mx-auto mt-5">
       <div class="card-header">Login</div>
+      <?php
+      if (isset($_GET['newpwd'])) {
+        if ($_GET['newpwd'] == "passwordupdated") {
+          echo '<p style="color: green; text-align: center;">Password Updated!</p>';
+        }
+      }
+      ?>
       <div class="card-body">
         <form action="<?php echo base_url(); ?>index.php/backend/signin" method="POST">
           <div class="form-group">

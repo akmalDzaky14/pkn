@@ -29,14 +29,21 @@
           <h4>Forgot your password?</h4>
           <p>Enter your email address and we will send you instructions on how to reset your password.</p>
         </div>
-        <form>
+        <?php
+        if (isset($_GET['reset'])) {
+          if ($_GET['reset'] == "success") {
+            echo '<p style="color: green; text-align: center;">Success, Please check your email!</p>';
+          }
+        }
+        ?>
+        <form action="<?php echo base_url(); ?>index.php/backend/resetPasswordReq" method="POST">
           <div class="form-group">
             <div class="form-label-group">
-              <input type="email" id="inputEmail" class="form-control" placeholder="Enter email address" required="required" autofocus="autofocus">
+              <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Enter email address" required="required" autofocus="autofocus">
               <label for="inputEmail">Enter email address</label>
             </div>
           </div>
-          <a class="btn btn-primary btn-block" href="<?php echo base_url(); ?>index.php/backend/login">Reset Password</a>
+          <input class="btn btn-primary btn-block" type="submit" name="reset-Pass-request" value="Reset Password">
         </form>
         <div class="text-center">
           <a class="d-block small mt-3" href="<?php echo base_url(); ?>index.php/backend/register">Register an Account</a>
