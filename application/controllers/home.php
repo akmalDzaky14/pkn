@@ -38,10 +38,15 @@ class Home extends CI_Controller
     }
     public function upload()
     {
-        $this->load->view('/Upload/upload');
+        $this->load->view('/Upload/form_upload');
     }
-    public function indextext()
+    public function koneksi()
     {
-        $this->load->view('/Upload/indextext');
+        $this->load->database();
+        $this->load->view('/Upload/koneksi.php');
+    }
+    public function detail()
+    {
+        $this->load->view('/Upload/detail.php');
     }
 }

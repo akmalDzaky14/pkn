@@ -15,7 +15,12 @@
             Masukan Judul proyek anda<br />
         </h1>
         <!-- memberikan name dan id -->
-        <textarea class="" id="Judul"></textarea>
+        <div>
+        <textarea placeholder="Judul" id="Judul"></textarea></div>
+        <div>
+        <textarea placeholder="Id_Marketing" id="Id_marketing"></textarea></div>
+        <div>   
+        <textarea placeholder="Alamat" id="Alamat"></textarea></div>
         <br />
         <h1>
             Masukan deskripsi proyek anda<br />
@@ -23,7 +28,7 @@
         <!-- memberikan name dan id -->
         <textarea class="ckeditor" id="ckedtor"></textarea>
         <br />
-        <button class="tombol">Simpan</button>
+        <button class="tombol" href="<?php echo base_url(); ?>/views/travel_destination">Simpan</button>
 		<div class="file-upload">
         <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add
             Image</button>
