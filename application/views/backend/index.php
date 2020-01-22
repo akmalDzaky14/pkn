@@ -103,7 +103,9 @@
                 <div class="dropdown-menu" aria-labelledby="pagesDropdown">
                     <h6 class="dropdown-header">Login Screens:</h6>
                     <a class="dropdown-item" href="<?php echo base_url(); ?>index.php/backend/login">Login</a>
-                    <a class="dropdown-item" href="<?php echo base_url(); ?>index.php/backend/register">Register</a>
+                    <a class="dropdown-item" href="<?php echo base_url(); ?>index.php/backend/register">Register User</a>
+                    <a class="dropdown-item" href="<?php echo base_url(); ?>index.php/backend/adminReg">Register Admin</a>
+                    <a class="dropdown-item" href="<?php echo base_url(); ?>index.php/backend/agentReg">Register Agent</a>
                     <a class="dropdown-item" href="<?php echo base_url(); ?>index.php/backend/forgot">Forgot Password</a>
                     <div class="dropdown-divider"></div>
                     <h6 class="dropdown-header">Other Pages:</h6>
@@ -741,7 +743,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="<?php echo base_url(); ?>">Logout</a>
+                    <a class="btn btn-primary" href="<?php echo base_url("index.php/backend/logout"); ?>">Logout</a>
                 </div>
             </div>
         </div>

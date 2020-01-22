@@ -5,6 +5,7 @@ if (isset($_POST['login'])) {
     $emailuid = $_POST['inputEmail'];
     $password = $_POST['inputPassword'];
 
+    //cek apakah email / password kosong
     if (empty($emailuid) || empty($password)) {
         $register = base_url("index.php/backend/login?error=emptyFields");
         header("refresh:1;url=$register");
@@ -12,6 +13,7 @@ if (isset($_POST['login'])) {
         echo "<script type='text/javascript'>alert('$message');</script>";
         exit();
     } else {
+        //cek email atau username di database
         $sql = "SELECT * FROM userlist WHERE uid=? OR email =?";
         $stmt = $this->db->call_function('stmt_init', $conn);
         if (!$this->db->call_function('stmt_prepare', $stmt, $sql)) {
@@ -21,11 +23,13 @@ if (isset($_POST['login'])) {
             echo "<script type='text/javascript'>alert('$message');</script>";
             exit();
         } else {
+            //menyambungkan parameter di statment sql
             mysqli_stmt_bind_param($stmt, 'ss', $emailuid, $emailuid);
             $this->db->call_function('stmt_execute', $stmt);
             $result = $this->db->call_function('stmt_get_result', $stmt);
-            if ($row = mysqli_fetch_assoc($result)) {
-                $pwdCheck = password_verify($password, $row['password']); //boolean
+            if ($row = mysqli_fetch_assoc($result)) { //menyimpan data dari database di variabel $row (array)
+                //cek password yang ada di database dan yang di input user denga output tipe boolean
+                $pwdCheck = password_verify($password, $row['password']);
                 if ($pwdCheck == false) {
                     $register = base_url("index.php/backend/login?error=nouser");
                     header("refresh:1;url=$register");
@@ -33,12 +37,22 @@ if (isset($_POST['login'])) {
                     echo "<script type='text/javascript'>alert('$message');</script>";
                     exit();
                 } elseif ($pwdCheck == true) {
+                    //memulai sesion jika data sudah valid
                     session_start();
                     $_SESSION['userID'] = $row['id'];
                     $_SESSION['username'] = $row['uid'];
+                    $_SESSION['Status'] = $row['id_status_akun'];
 
-                    $register = base_url("/index.php?login=success");
-                    header("refresh:1;url=$register");
+                    if ($_SESSION['Status'] == 1) {
+                        $register = base_url("/index.php/backend/main?login=success");
+                        header("refresh:1;url=$register");
+                    } elseif ($_SESSION['Status'] == 2) {
+                        $register = base_url("/index.php/backend/main?login=success");
+                        header("refresh:1;url=$register");
+                    } elseif ($_SESSION['Status'] == 3) {
+                        $register = base_url("/index.php?login=success");
+                        header("refresh:1;url=$register");
+                    }
                     $message = "Login Success!";
                     echo "<script type='text/javascript'>alert('$message');</script>";
                 } else {

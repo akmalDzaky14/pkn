@@ -5,7 +5,10 @@ class backend extends CI_Controller
 {
     public function index()
     {
-        $this->load->database();
+        $this->load->view('/backend/404');
+    }
+    public function main()
+    {
         $this->load->view('/backend/index');
     }
     public function notFound()
@@ -52,6 +55,15 @@ class backend extends CI_Controller
     {
         $this->load->view('/backend/register');
     }
+    public function adminReg()
+    {
+        $this->load->view('/backend/registerAdmin');
+    }
+    public function agentReg()
+    {
+        $this->load->view('/backend/registerAgen');
+    }
+
     public function upload()
     {
         $this->load->view('/backend/includes/dbHandler');
