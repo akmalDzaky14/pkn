@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>/resources/css/font-awesome.min.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>/resources/css/nice-select.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>/resources/css/magnific-popup.css">
-    <link rel="stylesheet" href="<?php echo base_url(); ?>/resources/css/bootstrap.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>/resources/css/bootstrap_detail.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>/resources/css/main.css">
 </head>
 <div class="section-top-border">
