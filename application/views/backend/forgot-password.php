@@ -29,6 +29,13 @@
           <h4>Forgot your password?</h4>
           <p>Enter your email address and we will send you instructions on how to reset your password.</p>
         </div>
+        <?php
+        if (isset($_GET['reset'])) {
+          if ($_GET['reset'] == "success") {
+            echo '<p style="color: green; text-align: center;">Success, Please check your email!</p>';
+          }
+        }
+        ?>
         <form action="<?php echo base_url(); ?>index.php/backend/resetPasswordReq" method="POST">
           <div class="form-group">
             <div class="form-label-group">

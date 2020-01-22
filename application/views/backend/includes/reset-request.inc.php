@@ -1,4 +1,12 @@
 <?php
+//include phpmailer files
+require '../includes/PHPMailer/src/PHPMailer.php';
+require '../includes/PHPMailer/src/SMTP.php';
+require '../includes/PHPMailer/src/Exception.php';
+//define name space
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
 if (isset($_POST["reset-Pass-request"])) {
 
@@ -55,12 +63,53 @@ if (isset($_POST["reset-Pass-request"])) {
     $message .= '<p>Here is your password reset link : <br>';
     $message .= '<a href"' . $url . '">' . $url . '</a></p>';
 
-    $headera = "From : Developer Team <test@gmail.com>\r\n";
-    $headera .= "Reply To : Developer Team <test@gmail.com>\r\n";
-    $headera .= "Content-type: text/html\r\n";
+    $header = "From : Developer Team <test@gmail.com>\r\n";
+    $header .= "Reply To : Developer Team <test@gmail.com>\r\n";
+    $header .= "Content-type: text/html\r\n";
 
-    //mengirim email menggunakan services mail yang ada
+    // //mengirim email menggunakan services mail yang ada dari github
+    // //membuat instance dari phpmailer
+    // $mail = new PHPMailer();
+    // //define mailer to use smtp
+    // $mail -> isSMTP();
+    // //define smtp host
+    // $mail ->Host="smtp.gmail.com";
+    // //enable smtp authentication
+    // $mail->SMTPAuth = "true";
+    // //set type of encryption (ssl/tls)
+    // $mail->SMTPSecure = "tls";
+    // // set port to connect smtp
+    // $mail->Port = "587";
+    // // set gmail username
+    // $mail -> Username = "akmaldzaky.lndi@gmail.com";
+    // // set gmail password
+    // $mail -> Password = "Kuhakuu1428";
+    // //set email subject
+    // $mail -> Subject = $subject;
+    // //set sender email
+    // $mail->setFrom("akmaldzaky.lndi@gmail.com");
+    // // Enable HTML
+    // $mail -> isHTML(true);
+    // // Attachment
+    // // $mail -> addAttachment('directory');
+    // //email body
+    // $mail -> $message;
+    // //penerima
+    // $mail -> addAddress("akmaldzaky.lndi@gmail.com");
+    // //send email
+    // if ($mail -> Send()) {
+    //     echo "Email send !";
+    // }else{
+    //     echo "Something Wrong";
+    // }
+    // // close connection
+    // $mail -> smtpClose();
 
+    // dari youtube
+    mail($to, $subject, $message, $header);
+
+    $register = base_url("index.php/backend/forgot?reset=success");
+    header("Location: $register");
 } else {
     $register = base_url();
     header("Location: $register");
