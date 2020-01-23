@@ -6,56 +6,61 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
 
     <!--CSS============================================= -->
-    <link rel="stylesheet" href="<?php echo base_url(); ?>/resources/css/linearicons.css">
-    <link rel="stylesheet" href="<?php echo base_url(); ?>/resources/css/owl.carousel.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>/resources/css/font-awesome.min.css">
-    <link rel="stylesheet" href="<?php echo base_url(); ?>/resources/css/nice-select.css">
-    <link rel="stylesheet" href="<?php echo base_url(); ?>/resources/css/magnific-popup.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>/resources/css/bootstrap_detail.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>/resources/css/main.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>/resources/css/backrond_detail.css">
+    <link rel="stylesheet"  href="<?php echo base_url(); ?>/resources/style.css">
 </head>
+<body>
 <div class="section-top-border">
     <div class="row">
         <div class="col-lg-8 col-md-8">
             <h3 class="mb-30">Form Element</h3>
             <form action="#">
                 <div class="mt-10">
-                    <input type="text" name="first_name" placeholder="First Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'First Name'" required class="single-input">
+                    <input type="text" name="Luas Tanah" placeholder="Luas Tanah" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Luas Tanah'" required class="single-input">
                 </div>
                 <div class="mt-10">
-                    <input type="text" name="last_name" placeholder="Last Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Last Name'" required class="single-input">
+                    <input type="text" name="Luas Bagunan" placeholder="Luas Bangunan" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Luas Bangunan'" required class="single-input">
                 </div>
                 <div class="mt-10">
-                    <input type="text" name="last_name" placeholder="Last Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Last Name'" required class="single-input">
+                    <input type="text" name="Kamar Tidur" placeholder="Kamar Tidur" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Kamar Tidur'" required class="single-input">
                 </div>
                 <div class="mt-10">
-                    <input type="email" name="EMAIL" placeholder="Email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email address'" required class="single-input">
+                    <input type="text" name="Kamar Mandi" placeholder="Kamar Mandi" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Kamar Mandi'" required class="single-input">
                 </div>
-                <div class="input-group-icon mt-10">
-                    <div class="icon"><i class="fa fa-thumb-tack" aria-hidden="true"></i></div>
+                <div class="mt-10">
+                    <input type="text" name="Daya Listrik" placeholder="Daya Listrik" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Daya Listrik'" required class="single-input">
+                </div>
+                <div class="mt-10">
+                    <!-- <div class="icon" ><i class="fa fa-thumb-tack" aria-hidden="true"></i></div> -->
                     <input type="text" name="address" placeholder="Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Address'" required class="single-input">
                 </div>
                 <div class="input-group-icon mt-10">
-                    <div class="icon"><i class="fa fa-plane" aria-hidden="true"></i></div>
-                    <div class="form-select" id="default-select"">
+                    <!-- <div class="icon"><i class="fa fa-plane" aria-hidden="true"></i></div> -->
+                    <div class="form-select" id="default-select">
 											<select>
 												<option value=" 1">City</option>
-                        <option value="1">Dhaka</option>
-                        <option value="1">Dilli</option>
-                        <option value="1">Newyork</option>
-                        <option value="1">Islamabad</option>
+                        <option value="1">Malang</option>
+                        <option value="1">Bogor</option>
+                        <option value="1">Surabaya</option>
+                        <option value="1">Jakarta</option>
+                        <option value="1">Lainya </option>
+                        
                         </select>
+                        
                     </div>
                 </div>
                 <div class="input-group-icon mt-10">
-                    <div class="icon"><i class="fa fa-globe" aria-hidden="true"></i></div>
+                    <!-- <div class="icon"><i class="fa fa-globe" aria-hidden="true"></i></div> -->
                     <div class="form-select" id="default-select">
                         <select>
                             <option value=" 1">Country</option>
-                            <option value="1">Bangladesh</option>
-                            <option value="1">India</option>
-                            <option value="1">England</option>
-                            <option value="1">Srilanka</option>
+                            <option value="1">indonesia</option>
+                            <option value="1">Jepang</option>
+                            <option value="1">Amerika</option>
+                            <option value="1">Singapura</option>
                         </select>
                     </div>
                 </div>
@@ -70,7 +75,7 @@
 											<label for="primary-input"></label>
 										</div>
 									</div> -->
-                <div class="mt-10">
+                <!-- <div class="mt-10">
                     <input type="text" name="first_name" placeholder="Primary color" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Primary color'" required class="single-input-primary">
                 </div>
                 <div class="mt-10">
@@ -78,10 +83,19 @@
                 </div>
                 <div class="mt-10">
                     <input type="text" name="first_name" placeholder="Secondary color" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Secondary color'" required class="single-input-secondary">
+                </div> -->
+                <div class="image-upload-wrap">
+                    <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
+                    <div class="drag-text">
+                        <h3>Drag and drop a file or select add Image</h3>
+                    </div>
+                </div>
+                <div class="mt-10" style="text-align: center;">
+                    <button type="submit" name="submit" href="<?php echo base_url(); ?>/views/travel_destination">Simpan</button>
                 </div>
             </form>
         </div>
-        <div class="col-lg-3 col-md-4 mt-sm-30">
+        <!-- <div class="col-lg-3 col-md-4 mt-sm-30">
             <div class="single-element-widget">
                 <h3 class="mb-30">Switches</h3>
                 <div class="switch-wrap d-flex justify-content-between">
@@ -194,12 +208,14 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>
 </div>
+</body>
 <script src="<?php echo base_url(); ?>/resources/js/vendor/jquery-2.2.4.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous">
+</script>
 <script src="<?php echo base_url(); ?>/resources/js/vendor/bootstrap.min.js"></script>
 <script src="<?php echo base_url(); ?>/resources/js/owl.carousel.min.js"></script>
 <script src="<?php echo base_url(); ?>/resources/js/jquery.sticky.js"></script>

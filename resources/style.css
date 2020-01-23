@@ -1,5 +1,5 @@
 body {
-    background: #fcfcfc;
+    background: #19e4c9;
 }
 
 h1 {
@@ -20,7 +20,7 @@ h1 {
 
 .kotak {
     margin: 20px auto;
-    background: #1ABC9C;
+    background: #fff;
     width: 900px;
     padding: 20px 50px 50px 50px;
     border-radius: 3px;
@@ -37,7 +37,7 @@ h1 {
     width: 100%;
     margin: 0;
     color: #fff;
-    background: #1FB264;
+    background: rgb(244, 247, 245);
     border: none;
     padding: 10px;
     border-radius: 4px;
@@ -49,7 +49,7 @@ h1 {
 }
 
 .file-upload-btn:hover {
-    background: #1AA059;
+    background: rgb(235, 240, 237);
     color: #ffffff;
     transition: all .2s ease;
     cursor: pointer;
@@ -79,12 +79,13 @@ h1 {
 .image-upload-wrap {
     margin-top: 20px;
     border: 4px dashed #1FB264;
+    background-color: #fff;
     position: relative;
 }
 
 .image-dropping,
 .image-upload-wrap:hover {
-    background-color: #1FB264;
+    background-color: rgb(231, 240, 235);
     border: 4px dashed #ffffff;
 }
 

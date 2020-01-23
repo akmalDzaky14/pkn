@@ -1,0 +1,16 @@
+.col-lg-8,
+.col-md-8 {
+    background: #1db1ec;
+}
+
+.icon {
+    position: relative;
+    top: 0;
+    left: 100px;
+}
+
+.fa .fa-plane {
+    position: relative;
+    top: 0;
+    left: 100px;
+}
