@@ -44,10 +44,10 @@ if (isset($_POST['login'])) {
                     $_SESSION['Status'] = $row['id_status_akun'];
 
                     if ($_SESSION['Status'] == 1) {
-                        $register = base_url("/index.php/backend/main?login=success");
+                        $register = base_url("/index.php/backend/main?login=success&tab=main");
                         header("refresh:1;url=$register");
                     } elseif ($_SESSION['Status'] == 2) {
-                        $register = base_url("/index.php/backend/main?login=success");
+                        $register = base_url("/index.php/backend/main?login=success&tab=main");
                         header("refresh:1;url=$register");
                     } elseif ($_SESSION['Status'] == 3) {
                         $register = base_url("/index.php?login=success");

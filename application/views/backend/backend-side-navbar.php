@@ -4,11 +4,9 @@
     if (isset($_GET['tab'])) {
         if ($_GET['tab'] == "main") {
             $main = "active";
-        }
-        if ($_GET['tab'] == "chart") {
+        } elseif ($_GET['tab'] == "chart") {
             $chart = "active";
-        }
-        if ($_GET['tab'] == "table") {
+        } elseif ($_GET['tab'] == "table") {
             $table = "active";
         }
     }
