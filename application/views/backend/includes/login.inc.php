@@ -13,7 +13,7 @@ if (isset($_POST['login'])) {
         exit();
     } else {
         // cek koneksi user
-        $sql = "SELECT * FROM userlist WHERE uid=? OR email =?";
+        $sql = "SELECT * FROM user_list WHERE uid=? OR email =?";
         $stmt = $this->db->call_function('stmt_init', $conn);
         if (!$this->db->call_function('stmt_prepare', $stmt, $sql)) {
             $register = base_url("index.php/backend/login?error=sqlerror");

@@ -1,6 +1,6 @@
 <?php
 // -----------------upload query---------------------
-$er = "INSERT INTO userlist (id, nama_depan, nama_belakang, email, password) VALUES (?,?, ?, ?, ?)";
+$er = "INSERT INTO user_list (id, nama_depan, nama_belakang, email, password) VALUES (?,?, ?, ?, ?)";
 $i = $this->db->query($er, array(4, 'dzai', 'rfefd', 'hgffhfh', 'enbvbnvnsdf'));
 if ($i) {
     echo 'berhasil';
@@ -11,7 +11,7 @@ if ($i) {
 <!-- ----------x-------upload query---------x----------- -->
 <!-- -------------------tampil data---------------------- -->
 <?php
-$query = $this->db->query('SELECT id, nama_depan, nama_belakang, email FROM userlist');
+$query = $this->db->query('SELECT id, nama_depan, nama_belakang, email FROM user_list');
 
 foreach ($query->result() as $row) {
     echo $row->id, '. ';

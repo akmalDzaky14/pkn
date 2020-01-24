@@ -47,7 +47,7 @@ if (isset($_POST["reset-pass-submit"])) {
 
                 $tokenEmail = $row["pwdResetEmail"];
 
-                $sql = "SELECT * FROM userlist WHERE email = ?";
+                $sql = "SELECT * FROM user_list WHERE email = ?";
                 $stmt = $this->db->call_function('stmt_init', $conn);
                 if (!$this->db->call_function('stmt_prepare', $stmt, $sql)) {
                     $message = "d!";
@@ -63,7 +63,7 @@ if (isset($_POST["reset-pass-submit"])) {
                         echo "<script type='text/javascript'>alert('$message');</script>";
                         exit();
                     } else {
-                        $sql = "UPDATE userlist SET password=? WHERE email=?";
+                        $sql = "UPDATE user_list SET password=? WHERE email=?";
                         $stmt = $this->db->call_function('stmt_init', $conn);
                         if (!$this->db->call_function('stmt_prepare', $stmt, $sql)) {
                             $message = "f!";
