@@ -98,7 +98,7 @@ if (isset($_POST['submit'])) {
                                     exit();
                                 } else {
                                     $hashPass = password_hash($pass,  PASSWORD_DEFAULT);
-                                    mysqli_stmt_bind_param($stmt, 'ssssss', $em, $fn, $ln, $hashPass, $username, $token);
+                                    mysqli_stmt_bind_param($stmt, 'ssssss', $fn, $ln, $username, $em, $hashPass, $token);
                                     $this->db->call_function('stmt_execute', $stmt);
                                     $register = base_url("index.php/backend/adminReg?register=success");
                                     header("Location: $register");
