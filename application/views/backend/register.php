@@ -39,8 +39,12 @@
             echo '<p style="color: red; text-align: center;" class="signuperror">Use Other Username</p>';
           } elseif ($_GET['error'] == "passwodchecked") {
             echo '<p style="color: red; text-align: center;" class="signuperror">Password Dont Match</p>';
-          } elseif ($_GET['error'] == "sqlerror") {
-            echo '<p style="color: red; text-align: center;" class="signuperror">Something Wrong, Try Again Later</p>';
+          } elseif ($_GET['error'] == "sqlerror1") {
+            echo '<p style="color: red; text-align: center;" class="signuperror">Something Wrong, please try again!</p>';
+          } elseif ($_GET['error'] == "sqlerror2") {
+            echo '<p style="color: red; text-align: center;" class="signuperror">Something Wrong, please try again!</p>';
+          } elseif ($_GET['error'] == "sqlerror3") {
+            echo '<p style="color: red; text-align: center;" class="signuperror">Something Wrong, please try again!</p>';
           } elseif ($_GET['error'] == "usernametaken") {
             echo '<p style="color: red; text-align: center;" class="signuperror">Username Already Taken, Please User Other Username</p>';
           }

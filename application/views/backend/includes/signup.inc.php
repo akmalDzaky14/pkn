@@ -42,7 +42,7 @@ if (isset($_POST['submit'])) {
         $sql = "SELECT uid FROM userlist WHERE uid=?";
         $stmt = $this->db->call_function('stmt_init', $conn);
         if (!$this->db->call_function('stmt_prepare', $stmt, $sql)) {
-            $register = base_url("index.php/backend/register?error=sqlerror");
+            $register = base_url("index.php/backend/register?error=sqlerror1");
             header("Location: $register");
             exit();
         } else {
@@ -59,7 +59,7 @@ if (isset($_POST['submit'])) {
                 $sql = "SELECT uid FROM userlist WHERE email=?";
                 $stmt = $this->db->call_function('stmt_init', $conn);
                 if (!$this->db->call_function('stmt_prepare', $stmt, $sql)) {
-                    $register = base_url("index.php/backend/register?error=sqlerror");
+                    $register = base_url("index.php/backend/register?error=sqlerror2");
                     header("Location: $register");
                     exit();
                 } else {
@@ -72,23 +72,16 @@ if (isset($_POST['submit'])) {
                         header("Location: $register");
                         exit();
                     } else {
-                        if ($_POST['id_status'] == "Admin") {
-                            $id_status = 1; //admin
-                        } elseif ($_POST['id_status'] == "Agen") {
-                            $id_status = 2; //agen
-                        } else {
-                            $id_status = 3; //user biasa
-                        }
                         //upload form register ke database
-                        $sql = "INSERT INTO userlist (email,nama_depan ,nama_belakang , password, uid, id_status_akun) VALUES (?,?,?,?,?,?)";
+                        $sql = "INSERT INTO userlist (email,nama_depan ,nama_belakang , password, uid) VALUES (?,?,?,?,?)";
                         $stmt = $this->db->call_function('stmt_init', $conn);
                         if (!$this->db->call_function('stmt_prepare', $stmt, $sql)) {
-                            $register = base_url("index.php/backend/register?error=sqlerror");
+                            $register = base_url("index.php/backend/register?error=sqlerror3");
                             header("Location: $register");
                             exit();
                         } else {
                             $hashPass = password_hash($pass,  PASSWORD_DEFAULT);
-                            mysqli_stmt_bind_param($stmt, 'ssssss', $em, $fn, $ln, $hashPass, $username, $id_status);
+                            mysqli_stmt_bind_param($stmt, 'sssss', $em, $fn, $ln, $hashPass, $username);
                             $this->db->call_function('stmt_execute', $stmt);
                             $register = base_url("index.php/backend/register?register=success");
                             header("Location: $register");

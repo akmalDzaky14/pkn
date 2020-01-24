@@ -78,6 +78,11 @@ class backend extends CI_Controller
         $this->load->database();
         $this->load->view('/backend/Session/Agent/signup.inc.php');
     }
+    public function adminsignup()
+    {
+        $this->load->database();
+        $this->load->view('/backend/Session/Admin/signup.inc.php');
+    }
     public function signin()
     {
         $this->load->database();
