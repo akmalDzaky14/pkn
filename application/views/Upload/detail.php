@@ -17,39 +17,37 @@
     <div class="row">
         <div class="col-lg-8 col-md-8">
             <h3 class="mb-30">Form Element</h3>
-            <form action="#">
+            <form action="" method="post" class="mt-10" enctype="multipart/form-data">
                 <div class="mt-10">
-                    <input type="text" name="Luas Tanah" placeholder="Luas Tanah" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Luas Tanah'" required class="single-input">
+                    <input type="text" name="Luas_tanah" id="Luas_tanah" placeholder="Luas Tanah" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Luas Tanah'" required class="single-input">
                 </div>
                 <div class="mt-10">
-                    <input type="text" name="Luas Bagunan" placeholder="Luas Bangunan" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Luas Bangunan'" required class="single-input">
+                    <input type="text" name="Luas_bangunan" id="Luas_bangunan" placeholder="Luas Bangunan" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Luas Bangunan'" required class="single-input">
                 </div>
                 <div class="mt-10">
-                    <input type="text" name="Kamar Tidur" placeholder="Kamar Tidur" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Kamar Tidur'" required class="single-input">
+                    <input type="text" name="Kamar_tidur" id="Kamar_tidur" placeholder="Kamar Tidur" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Kamar Tidur'" required class="single-input">
                 </div>
                 <div class="mt-10">
-                    <input type="text" name="Kamar Mandi" placeholder="Kamar Mandi" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Kamar Mandi'" required class="single-input">
+                    <input type="text" name="Kamar_mandi" id="Kamar_mandi" placeholder="Kamar Mandi" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Kamar Mandi'" required class="single-input">
                 </div>
                 <div class="mt-10">
-                    <input type="text" name="Daya Listrik" placeholder="Daya Listrik" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Daya Listrik'" required class="single-input">
+                    <input type="text" name="Daya_listrik" id="Daya_listrik" placeholder="Daya Listrik" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Daya Listrik'" required class="single-input">
                 </div>
                 <div class="mt-10">
                     <!-- <div class="icon" ><i class="fa fa-thumb-tack" aria-hidden="true"></i></div> -->
-                    <input type="text" name="address" placeholder="Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Address'" required class="single-input">
+                    <input type="text" name="Address" id="Address" placeholder="Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Address'" required class="single-input">
                 </div>
                 <div class="input-group-icon mt-10">
                     <!-- <div class="icon"><i class="fa fa-plane" aria-hidden="true"></i></div> -->
                     <div class="form-select" id="default-select">
-											<select>
-												<option value=" 1">City</option>
-                        <option value="1">Malang</option>
-                        <option value="1">Bogor</option>
-                        <option value="1">Surabaya</option>
-                        <option value="1">Jakarta</option>
-                        <option value="1">Lainya </option>
-                        
+						<select>
+    						<option value=" 1">City</option>
+                            <option value="1">Malang</option>
+                            <option value="1">Bogor</option>
+                            <option value="1">Surabaya</option>
+                            <option value="1">Jakarta</option>
+                            <option value="1">Lainya </option>
                         </select>
-                        
                     </div>
                 </div>
                 <div class="input-group-icon mt-10">
@@ -85,13 +83,13 @@
                     <input type="text" name="first_name" placeholder="Secondary color" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Secondary color'" required class="single-input-secondary">
                 </div> -->
                 <div class="image-upload-wrap">
-                    <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
+                    <input type="file" class="file-upload-input" id="foto" name="foto">
                     <div class="drag-text">
                         <h3>Drag and drop a file or select add Image</h3>
                     </div>
                 </div>
                 <div class="mt-10" style="text-align: center;">
-                    <button type="submit" name="submit" href="<?php echo base_url(); ?>/views/travel_destination">Simpan</button>
+                    <input type="submit" class="btn btn-primary" value="Simpan" name="simpan">
                 </div>
             </form>
         </div>
