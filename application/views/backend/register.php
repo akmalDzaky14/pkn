@@ -112,6 +112,7 @@
         <div class="text-center">
           <a class="d-block small mt-3" href="<?php echo base_url(); ?>index.php/backend/login">Login Page</a>
           <a class="d-block small" href="<?php echo base_url(); ?>index.php/backend/forgot">Forgot Password?</a>
+          <a class="d-block small" href="<?php echo base_url(); ?>" class="tombol">back</a>
         </div>
       </div>
     </div>

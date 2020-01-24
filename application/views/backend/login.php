@@ -62,7 +62,7 @@
         <div class="text-center">
           <a class="d-block small mt-3" href="<?php echo base_url(); ?>index.php/backend/register">Register an Account</a>
           <a class="d-block small" href="<?php echo base_url(); ?>index.php/backend/forgot">Forgot Password?</a>
-          <a class="d-block small" href="<?php echo base_url(); ?>" class="tombol">back</a>
+          <a class="d-block small" href="<?php echo base_url(); ?>" class="tombol">Home</a>
         </div>
       </div>
     </div>
