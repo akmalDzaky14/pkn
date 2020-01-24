@@ -43,6 +43,8 @@
                         echo '<p style="color: red; text-align: center;" class="signuperror">Something Wrong, Try Again Later</p>';
                     } elseif ($_GET['error'] == "usernametaken") {
                         echo '<p style="color: red; text-align: center;" class="signuperror">Username Already Taken, Please User Other Username</p>';
+                    } elseif ($_GET['error'] == "duplicatetoken") {
+                        echo '<p style="color: red; text-align: center;" class="signuperror">Something Wrong, please try again!</p>';
                     }
                 } elseif (isset($_GET['register'])) {
                     if ($_GET['register'] == "success") {
@@ -52,7 +54,7 @@
                 ?>
             </div>
             <div class="card-body">
-                <form action="<?php echo base_url(); ?>index.php/backend/signup" method="POST">
+                <form action="<?php echo base_url(); ?>index.php/backend/agentsignup" method="POST">
                     <div class="form-group">
                         <div class="form-row">
                             <div class="col-md-6">
