@@ -38,14 +38,14 @@ if (isset($_POST["reset-pass-submit"])) {
         } else {
             $tokenBin = hex2bin($validator);
             $tokenChecked = password_verify($tokenBin, $row["pwdResetToken"]);
+            // cek email di database
+            $tokenEmail = $row["pwdResetEmail"];
 
             if ($tokenChecked === false) {
                 $register = base_url("/index.php/backend/resetPassword?error=sqlerror3&selector=$selector&validator=$validator");
                 header("Location: $register");
                 exit();
             } elseif ($tokenChecked === true) {
-                // cek email di database
-                $tokenEmail = $row["pwdResetEmail"];
 
                 $sql = "SELECT * FROM user_list WHERE email = ?";
                 $stmt = $this->db->call_function('stmt_init', $conn);
@@ -127,7 +127,7 @@ if (isset($_POST["reset-pass-submit"])) {
                                             }
                                         }
                                     } else { //jika email user tidak ada di user_list cek di admin_list
-                                        $sql = "SELECT * FROM agent_list WHERE email = ?";
+                                        $sql = "SELECT * FROM admin_list WHERE email = ?";
                                         $stmt = $this->db->call_function('stmt_init', $conn);
                                         if (!$this->db->call_function('stmt_prepare', $stmt, $sql)) {
                                             $register = base_url("/index.php/backend/resetPassword?error=sqlerror4&selector=$selector&validator=$validator");
@@ -141,7 +141,7 @@ if (isset($_POST["reset-pass-submit"])) {
                                             if ($row = mysqli_fetch_assoc($result)) {
                                                 if ($tokenEmail == $row['email']) {
                                                     // update password di database dengan password baru jika email sama
-                                                    $sql = "UPDATE agent_list SET password=? WHERE email=?";
+                                                    $sql = "UPDATE admin_list SET password=? WHERE email=?";
                                                     $stmt = $this->db->call_function('stmt_init', $conn);
                                                     if (!$this->db->call_function('stmt_prepare', $stmt, $sql)) {
                                                         $register = base_url("/index.php/backend/resetPassword?error=sqlerror6&selector=$selector&validator=$validator");

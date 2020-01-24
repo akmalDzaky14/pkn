@@ -56,6 +56,9 @@ $token = random_bytes(32);
 $to = $userEmail;
 $subject = "Reset Your Password";
 
+//url untuk ganti password. ganti url sesuai kebutuhan, disini karena menggunakan CI jadi perhatikan controller.
+$url = "localhost/CodeIgniter/index.php/backend/resetPassword?selector=" . $selector . "&validator=" . bin2hex($token);
+
 $message = '<p>We recive reset password request. If you dont request this, you can ignore this</p>';
 $message .= '<p>Here is your password reset link : <br>';
 $message .= '<a href"' . $url . '">' . $url . '</a></p>';
@@ -64,8 +67,6 @@ $header = "From : Developer Team <test@gmail.com>\r\n";
 $header .= "Reply To : Developer Team <test@gmail.com>\r\n";
 $header .= "Content-type: text/html\r\n";
 
-//url untuk ganti password. ganti url sesuai kebutuhan, disini karena menggunakan CI jadi perhatikan controller.
-$url = "localhost/CodeIgniter/index.php/backend/resetPassword?selector=" . $selector . "&validator=" . bin2hex($token);
 
 //Tahun, untuk menyesuaikan waktu expire token
 $expires = date("U") + 1800;
