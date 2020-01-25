@@ -5,8 +5,7 @@ class Home extends CI_Controller
 {
     public function index()
     {
-        $data['view_page'] = 'homepage';
-        $this->load->view('site', $data);
+        $this->load->view('site');
     }
     public function about()
     {

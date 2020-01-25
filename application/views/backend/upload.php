@@ -8,7 +8,7 @@ $em = $_POST['email'];
 $pass = $_POST['pass'];
 $confpass = $_POST['confPass'];
 
-$emailConfirm = "SELECT*FROM userlist where email = '$em'";
+$emailConfirm = "SELECT*FROM user_list where email = '$em'";
 $result = $this->db->query($emailConfirm);
 $num = $result->num_rows();
 if ($pass == $confpass) {
@@ -18,7 +18,7 @@ if ($pass == $confpass) {
         $message = "Email already taken, you will automaticly redirect";
         echo "<script type='text/javascript'>alert('$message');</script>";
     } else if (!filter_var($em, FILTER_VALIDATE_EMAIL)) {
-        $upload = "INSERT INTO userlist (nama_depan, nama_belakang, email, password) VALUES ('$fn', '$ln', '$em', '$pass')";
+        $upload = "INSERT INTO user_list (nama_depan, nama_belakang, email, password) VALUES ('$fn', '$ln', '$em', '$pass')";
         $this->db->query($upload);
         $log = base_url("index.php/backend/login");
         header("refresh:1;url=$log");

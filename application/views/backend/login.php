@@ -32,11 +32,23 @@
       }
       ?>
       <div class="card-body">
+        <?php
+        if (isset($_GET['error'])) {
+          if ($_GET['error'] == "usernotfound") {
+            echo '<p style="color: red; text-align: center;" class="loginerror">Username or Email not found!</p>';
+          } elseif ($_GET['error'] == "userwrongpass") {
+            echo '<p style="color: red; text-align: center;" class="loginerror">Wrong Password!</p>';
+          } elseif ($_GET['error'] == "agentwrongpass") {
+            echo '<p style="color: red; text-align: center;" class="loginerror">Wrong Password!</p>';
+          } elseif ($_GET['error'] == "adminwrongpass") {
+            echo '<p style="color: red; text-align: center;" class="loginerror">Wrong Password!</p>';
+          }
+        } ?>
         <form action="<?php echo base_url(); ?>index.php/backend/signin" method="POST">
           <div class="form-group">
             <div class="form-label-group">
               <input name="inputEmail" id="inputEmail" class="form-control" placeholder="Email address" required="required" autofocus="autofocus">
-              <label for="inputEmail">Email address</label>
+              <label for="inputEmail">Email or Username</label>
             </div>
           </div>
           <div class="form-group">
@@ -45,20 +57,12 @@
               <label for="inputPassword">Password</label>
             </div>
           </div>
-          <div class="form-group">
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" value="remember-me">
-                Remember Password
-              </label>
-            </div>
-          </div>
           <input class="btn btn-primary btn-block" type="submit" name="login" value="login">
         </form>
         <div class="text-center">
           <a class="d-block small mt-3" href="<?php echo base_url(); ?>index.php/backend/register">Register an Account</a>
           <a class="d-block small" href="<?php echo base_url(); ?>index.php/backend/forgot">Forgot Password?</a>
-          <a class="d-block small" href="<?php echo base_url(); ?>" class="tombol">back</a>
+          <a class="d-block small" href="<?php echo base_url(); ?>" class="tombol">Home</a>
         </div>
       </div>
     </div>

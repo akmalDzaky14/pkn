@@ -39,10 +39,10 @@ if (isset($_POST['submit'])) {
     } //lanjut jika lolos pemeriksaan tahap 1
     else {
         // cek username di database
-        $sql = "SELECT uid FROM userlist WHERE uid=?";
+        $sql = "SELECT uid FROM user_list WHERE uid=?";
         $stmt = $this->db->call_function('stmt_init', $conn);
         if (!$this->db->call_function('stmt_prepare', $stmt, $sql)) {
-            $register = base_url("index.php/backend/register?error=sqlerror");
+            $register = base_url("index.php/backend/register?error=sqlerror1");
             header("Location: $register");
             exit();
         } else {
@@ -56,10 +56,10 @@ if (isset($_POST['submit'])) {
                 exit();
             } else {
                 //cek email di database
-                $sql = "SELECT uid FROM userlist WHERE email=?";
+                $sql = "SELECT uid FROM user_list WHERE email=?";
                 $stmt = $this->db->call_function('stmt_init', $conn);
                 if (!$this->db->call_function('stmt_prepare', $stmt, $sql)) {
-                    $register = base_url("index.php/backend/register?error=sqlerror");
+                    $register = base_url("index.php/backend/register?error=sqlerror2");
                     header("Location: $register");
                     exit();
                 } else {
@@ -73,10 +73,10 @@ if (isset($_POST['submit'])) {
                         exit();
                     } else {
                         //upload form register ke database
-                        $sql = "INSERT INTO userlist (email,nama_depan ,nama_belakang , password, uid) VALUES (?,?,?,?,?)";
+                        $sql = "INSERT INTO user_list (email,nama_depan ,nama_belakang , password, uid) VALUES (?,?,?,?,?)";
                         $stmt = $this->db->call_function('stmt_init', $conn);
                         if (!$this->db->call_function('stmt_prepare', $stmt, $sql)) {
-                            $register = base_url("index.php/backend/register?error=sqlerror");
+                            $register = base_url("index.php/backend/register?error=sqlerror3");
                             header("Location: $register");
                             exit();
                         } else {

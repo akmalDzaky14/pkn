@@ -39,8 +39,12 @@
             echo '<p style="color: red; text-align: center;" class="signuperror">Use Other Username</p>';
           } elseif ($_GET['error'] == "passwodchecked") {
             echo '<p style="color: red; text-align: center;" class="signuperror">Password Dont Match</p>';
-          } elseif ($_GET['error'] == "sqlerror") {
-            echo '<p style="color: red; text-align: center;" class="signuperror">Something Wrong, Try Again Later</p>';
+          } elseif ($_GET['error'] == "sqlerror1") {
+            echo '<p style="color: red; text-align: center;" class="signuperror">Something Wrong, please try again!</p>';
+          } elseif ($_GET['error'] == "sqlerror2") {
+            echo '<p style="color: red; text-align: center;" class="signuperror">Something Wrong, please try again!</p>';
+          } elseif ($_GET['error'] == "sqlerror3") {
+            echo '<p style="color: red; text-align: center;" class="signuperror">Something Wrong, please try again!</p>';
           } elseif ($_GET['error'] == "usernametaken") {
             echo '<p style="color: red; text-align: center;" class="signuperror">Username Already Taken, Please User Other Username</p>';
           }
@@ -108,6 +112,7 @@
         <div class="text-center">
           <a class="d-block small mt-3" href="<?php echo base_url(); ?>index.php/backend/login">Login Page</a>
           <a class="d-block small" href="<?php echo base_url(); ?>index.php/backend/forgot">Forgot Password?</a>
+          <a class="d-block small" href="<?php echo base_url(); ?>" class="tombol">back</a>
         </div>
       </div>
     </div>

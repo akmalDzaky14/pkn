@@ -12,25 +12,23 @@ if (isset($_POST['login'])) {
         echo "<script type='text/javascript'>alert('$message');</script>";
         exit();
     } else {
-        $sql = "SELECT * FROM userlist WHERE uid=? OR email =?";
+        // cek koneksi user
+        $sql = "SELECT * FROM user_list WHERE uid=? OR email =?";
         $stmt = $this->db->call_function('stmt_init', $conn);
         if (!$this->db->call_function('stmt_prepare', $stmt, $sql)) {
             $register = base_url("index.php/backend/login?error=sqlerror");
             header("refresh:1;url=$register");
-            $message = "SQL ERROR";
-            echo "<script type='text/javascript'>alert('$message');</script>";
             exit();
         } else {
-            mysqli_stmt_bind_param($stmt, 'ss', $emailuid, $emailuid);
+            //cek apakah email atau username ada di database user
+            mysqli_stmt_bind_param($stmt, 'ss', $emailuid, $emailuid); //bind parameter
             $this->db->call_function('stmt_execute', $stmt);
             $result = $this->db->call_function('stmt_get_result', $stmt);
             if ($row = mysqli_fetch_assoc($result)) {
                 $pwdCheck = password_verify($password, $row['password']); //boolean
                 if ($pwdCheck == false) {
-                    $register = base_url("index.php/backend/login?error=nouser");
+                    $register = base_url("index.php/backend/login?error=userwrongpass");
                     header("refresh:1;url=$register");
-                    $message = "Wrong Password!";
-                    echo "<script type='text/javascript'>alert('$message');</script>";
                     exit();
                 } elseif ($pwdCheck == true) {
                     session_start();
@@ -39,21 +37,81 @@ if (isset($_POST['login'])) {
 
                     $register = base_url("/index.php?login=success");
                     header("refresh:1;url=$register");
-                    $message = "Login Success!";
-                    echo "<script type='text/javascript'>alert('$message');</script>";
                 } else {
-                    $register = base_url("index.php/backend/login?error=nouser");
+                    $register = base_url("index.php/backend/login?error=userwrongpass");
                     header("refresh:1;url=$register");
-                    $message = "Wrong Password!";
-                    echo "<script type='text/javascript'>alert('$message');</script>";
                     exit();
                 }
             } else {
-                $register = base_url("index.php/backend/login?error=nouser");
-                header("refresh:1;url=$register");
-                $message = "USER NOT FOUND!";
-                echo "<script type='text/javascript'>alert('$message');</script>";
-                exit();
+                //cek koneksi agent
+                $sql = "SELECT * FROM agent_list WHERE uid=? OR email =?";
+                $stmt = $this->db->call_function('stmt_init', $conn);
+                if (!$this->db->call_function('stmt_prepare', $stmt, $sql)) {
+                    $register = base_url("index.php/backend/login?error=sqlerror");
+                    header("refresh:1;url=$register");
+                    exit();
+                } else {
+                    //cek apakah email atau username ada di database agent
+                    mysqli_stmt_bind_param($stmt, 'ss', $emailuid, $emailuid);
+                    $this->db->call_function('stmt_execute', $stmt);
+                    $result = $this->db->call_function('stmt_get_result', $stmt);
+                    if ($row = mysqli_fetch_assoc($result)) {
+                        $pwdCheck = password_verify($password, $row['password']); //boolean
+                        if ($pwdCheck == false) {
+                            $register = base_url("index.php/backend/login?error=agentwrongpass");
+                            header("refresh:1;url=$register");
+                            exit();
+                        } elseif ($pwdCheck == true) {
+                            session_start();
+                            $_SESSION['userID'] = $row['id'];
+                            $_SESSION['username'] = $row['uid'];
+
+                            $register = base_url("/index.php?login=success");
+                            header("refresh:1;url=$register");
+                        } else {
+                            $register = base_url("index.php/backend/login?error=agentwrongpass");
+                            header("refresh:1;url=$register");
+                            exit();
+                        }
+                    } else {
+                        // cek koneksi admin
+                        $sql = "SELECT * FROM admin_list WHERE uid=? OR email =?";
+                        $stmt = $this->db->call_function('stmt_init', $conn);
+                        if (!$this->db->call_function('stmt_prepare', $stmt, $sql)) {
+                            $register = base_url("index.php/backend/login?error=sqlerror");
+                            header("refresh:1;url=$register");
+                            exit();
+                        } else {
+                            //cek apakah email atau username ada di database agent
+                            mysqli_stmt_bind_param($stmt, 'ss', $emailuid, $emailuid);
+                            $this->db->call_function('stmt_execute', $stmt);
+                            $result = $this->db->call_function('stmt_get_result', $stmt);
+                            if ($row = mysqli_fetch_assoc($result)) {
+                                $pwdCheck = password_verify($password, $row['password']); //boolean
+                                if ($pwdCheck == false) {
+                                    $register = base_url("index.php/backend/login?error=adminwrongpass");
+                                    header("refresh:1;url=$register");
+                                    exit();
+                                } elseif ($pwdCheck == true) {
+                                    session_start();
+                                    $_SESSION['userID'] = $row['id'];
+                                    $_SESSION['username'] = $row['uid'];
+
+                                    $register = base_url("/index.php?login=success");
+                                    header("refresh:1;url=$register");
+                                } else {
+                                    $register = base_url("index.php/backend/login?error=adminwrongpass");
+                                    header("refresh:1;url=$register");
+                                    exit();
+                                }
+                            } else {
+                                $register = base_url("index.php/backend/login?error=usernotfound");
+                                header("refresh:1;url=$register");
+                                exit();
+                            }
+                        }
+                    }
+                }
             }
         }
     }

@@ -33,6 +33,10 @@
         if (isset($_GET['reset'])) {
           if ($_GET['reset'] == "success") {
             echo '<p style="color: green; text-align: center;">Success, Please check your email!</p>';
+          } elseif ($_GET['reset'] == "duplicateemail") {
+            echo '<p style="color: red; text-align: center;">Please Contact administrator!</p>';
+          } elseif ($_GET['reset'] == "unknowemail") {
+            echo '<p style="color: red; text-align: center;">Unknow email!</p>';
           }
         }
         ?>
