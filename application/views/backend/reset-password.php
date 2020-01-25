@@ -66,12 +66,16 @@
                         <form action="<?php echo base_url(); ?>index.php/backend/resetPasswordValidate" method="POST">
                             <div class="form-group">
                                 <div class="form-label-group">
-                                    <input type="hidden" name="selector" value="<?php echo $selector ?>">
-                                    <input type="hidden" name="validator" value="<?php echo $validator ?>">
-                                    <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Password" required="required" autofocus="autofocus">
-                                    <input type="password" name="password-repeat" id="password-repeat" class="form-control" placeholder="Confirm Password" required="required">
+                                    <input type="password" name="inputPassword" id="inputPassword" class="form-control" required="required" autofocus="autofocus" placeholder="Password">
+                                    <label for="inputPassword">Password</label>
+                                </div>
+                                <div class="form-label-group">
+                                    <input type="password" name="password-repeat" id="password-repeat" class="form-control" required="required" placeholder="Confirm password">
+                                    <label for="password-repeat">Confirm password</label>
                                 </div>
                             </div>
+                            <input type="hidden" name="selector" value="<?php echo $selector ?>">
+                            <input type="hidden" name="validator" value="<?php echo $validator ?>">
                             <input class="btn btn-primary btn-block" type="submit" name="reset-pass-submit" value="Reset Password">
                         </form>
                         <div class="text-center">
