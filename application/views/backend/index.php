@@ -25,13 +25,13 @@
 <body id="page-top">
 
     <!------ Header ------>
-    <?php include 'backend-header.php'; ?>
+    <?php include 'C:\xampp\htdocs\CodeIgniter\application\views\backend\includes\backend-header.php'; ?>
     <!--x---- Header ----x-->
 
     <!----- Wrapper ----->
     <div id="wrapper">
         <!-- Sidebar -->
-        <?php include 'backend-side-navbar.php'; ?>
+        <?php include 'C:\xampp\htdocs\CodeIgniter\application\views\backend\includes\backend-side-navbar.php'; ?>
         <!--x-- Sidebar --x--->
 
         <!------------- content -------------->
