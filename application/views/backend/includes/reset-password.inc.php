@@ -59,49 +59,87 @@ if (isset($_POST["reset-pass-submit"])) {
                     $this->db->call_function('stmt_execute', $stmt);
                     $result = mysqli_stmt_get_result($stmt);
                     if ($row = mysqli_fetch_assoc($result)) {
-                        if ($tokenEmail == $row['email']) {
-                            // update password di database dengan password baru jika email sama
-                            $sql = "UPDATE user_list SET password=? WHERE email=?";
+                        // update password di database dengan password baru jika email sama
+                        $sql = "UPDATE user_list SET password=? WHERE email=?";
+                        $stmt = $this->db->call_function('stmt_init', $conn);
+                        if (!$this->db->call_function('stmt_prepare', $stmt, $sql)) {
+                            $register = base_url("/index.php/backend/resetPassword?error=sqlerror6&selector=$selector&validator=$validator");
+                            header("Location: $register");
+                            exit();
+                        } else {
+                            $newPwdHashed = password_hash($pass, PASSWORD_DEFAULT);
+                            mysqli_stmt_bind_param($stmt, 'ss', $newPwdHashed, $tokenEmail);
+                            $this->db->call_function('stmt_execute', $stmt);
+
+                            $sql = "DELETE FROM pwdreset WHERE pwdResetEmail = ?";
                             $stmt = $this->db->call_function('stmt_init', $conn);
                             if (!$this->db->call_function('stmt_prepare', $stmt, $sql)) {
-                                $register = base_url("/index.php/backend/resetPassword?error=sqlerror6&selector=$selector&validator=$validator");
+                                $register = base_url("/index.php/backend/resetPassword?error=sqlerror7&selector=$selector&validator=$validator");
                                 header("Location: $register");
                                 exit();
                             } else {
-                                $newPwdHashed = password_hash($pass, PASSWORD_DEFAULT);
-                                mysqli_stmt_bind_param($stmt, 'ss', $newPwdHashed, $tokenEmail);
+                                // kembali ketika berhasil update password
+                                mysqli_stmt_bind_param($stmt, 's', $tokenEmail);
                                 $this->db->call_function('stmt_execute', $stmt);
+                                $register = base_url("index.php/backend/login?newpwd=passwordupdated");
+                                header("Location: $register");
+                            }
+                        }
+                    } else {
+                        $sql = "SELECT * FROM agent_list WHERE email = ?";
+                        $stmt = $this->db->call_function('stmt_init', $conn);
+                        if (!$this->db->call_function('stmt_prepare', $stmt, $sql)) {
+                            $register = base_url("/index.php/backend/resetPassword?error=sqlerror4&selector=$selector&validator=$validator");
+                            header("Location: $register");
+                            exit();
+                        } else {
+                            // cek apakah email ada di database agent_list
+                            mysqli_stmt_bind_param($stmt, 's', $tokenEmail);
+                            $this->db->call_function('stmt_execute', $stmt);
+                            $result = mysqli_stmt_get_result($stmt);
+                            if ($row = mysqli_fetch_assoc($result)) {
 
-                                $sql = "DELETE FROM pwdreset WHERE pwdResetEmail = ?";
+                                // update password di database dengan password baru jika email sama
+                                $sql = "UPDATE agent_list SET password=? WHERE email=?";
                                 $stmt = $this->db->call_function('stmt_init', $conn);
                                 if (!$this->db->call_function('stmt_prepare', $stmt, $sql)) {
-                                    $register = base_url("/index.php/backend/resetPassword?error=sqlerror7&selector=$selector&validator=$validator");
+                                    $register = base_url("/index.php/backend/resetPassword?error=sqlerror6&selector=$selector&validator=$validator");
                                     header("Location: $register");
                                     exit();
                                 } else {
-                                    // kembali ketika berhasil update password
+                                    $newPwdHashed = password_hash($pass, PASSWORD_DEFAULT);
+                                    mysqli_stmt_bind_param($stmt, 'ss', $newPwdHashed, $tokenEmail);
+                                    $this->db->call_function('stmt_execute', $stmt);
+
+                                    $sql = "DELETE FROM pwdreset WHERE pwdResetEmail = ?";
+                                    $stmt = $this->db->call_function('stmt_init', $conn);
+                                    if (!$this->db->call_function('stmt_prepare', $stmt, $sql)) {
+                                        $register = base_url("/index.php/backend/resetPassword?error=sqlerror7&selector=$selector&validator=$validator");
+                                        header("Location: $register");
+                                        exit();
+                                    } else {
+                                        // kembali ketika berhasil update password
+                                        mysqli_stmt_bind_param($stmt, 's', $tokenEmail);
+                                        $this->db->call_function('stmt_execute', $stmt);
+                                        $register = base_url("index.php/backend/login?newpwd=passwordupdated");
+                                        header("Location: $register");
+                                    }
+                                }
+                            } else { //jika email user tidak ada di user_list cek di admin_list
+                                $sql = "SELECT * FROM admin_list WHERE email = ?";
+                                $stmt = $this->db->call_function('stmt_init', $conn);
+                                if (!$this->db->call_function('stmt_prepare', $stmt, $sql)) {
+                                    $register = base_url("/index.php/backend/resetPassword?error=sqlerror4&selector=$selector&validator=$validator");
+                                    header("Location: $register");
+                                    exit();
+                                } else {
+                                    // cek apakah email ada di database admin_list
                                     mysqli_stmt_bind_param($stmt, 's', $tokenEmail);
                                     $this->db->call_function('stmt_execute', $stmt);
-                                    $register = base_url("index.php/backend/login?newpwd=passwordupdated");
-                                    header("Location: $register");
-                                }
-                            }
-                        } else {
-                            $sql = "SELECT * FROM agent_list WHERE email = ?";
-                            $stmt = $this->db->call_function('stmt_init', $conn);
-                            if (!$this->db->call_function('stmt_prepare', $stmt, $sql)) {
-                                $register = base_url("/index.php/backend/resetPassword?error=sqlerror4&selector=$selector&validator=$validator");
-                                header("Location: $register");
-                                exit();
-                            } else {
-                                // cek apakah email ada di database agent_list
-                                mysqli_stmt_bind_param($stmt, 's', $tokenEmail);
-                                $this->db->call_function('stmt_execute', $stmt);
-                                $result = mysqli_stmt_get_result($stmt);
-                                if ($row = mysqli_fetch_assoc($result)) {
-                                    if ($tokenEmail == $row['email']) {
+                                    $result = mysqli_stmt_get_result($stmt);
+                                    if ($row = mysqli_fetch_assoc($result)) {
                                         // update password di database dengan password baru jika email sama
-                                        $sql = "UPDATE agent_list SET password=? WHERE email=?";
+                                        $sql = "UPDATE admin_list SET password=? WHERE email=?";
                                         $stmt = $this->db->call_function('stmt_init', $conn);
                                         if (!$this->db->call_function('stmt_prepare', $stmt, $sql)) {
                                             $register = base_url("/index.php/backend/resetPassword?error=sqlerror6&selector=$selector&validator=$validator");
@@ -126,53 +164,10 @@ if (isset($_POST["reset-pass-submit"])) {
                                                 header("Location: $register");
                                             }
                                         }
-                                    } else { //jika email user tidak ada di user_list cek di admin_list
-                                        $sql = "SELECT * FROM admin_list WHERE email = ?";
-                                        $stmt = $this->db->call_function('stmt_init', $conn);
-                                        if (!$this->db->call_function('stmt_prepare', $stmt, $sql)) {
-                                            $register = base_url("/index.php/backend/resetPassword?error=sqlerror4&selector=$selector&validator=$validator");
-                                            header("Location: $register");
-                                            exit();
-                                        } else {
-                                            // cek apakah email ada di database admin_list
-                                            mysqli_stmt_bind_param($stmt, 's', $tokenEmail);
-                                            $this->db->call_function('stmt_execute', $stmt);
-                                            $result = mysqli_stmt_get_result($stmt);
-                                            if ($row = mysqli_fetch_assoc($result)) {
-                                                if ($tokenEmail == $row['email']) {
-                                                    // update password di database dengan password baru jika email sama
-                                                    $sql = "UPDATE admin_list SET password=? WHERE email=?";
-                                                    $stmt = $this->db->call_function('stmt_init', $conn);
-                                                    if (!$this->db->call_function('stmt_prepare', $stmt, $sql)) {
-                                                        $register = base_url("/index.php/backend/resetPassword?error=sqlerror6&selector=$selector&validator=$validator");
-                                                        header("Location: $register");
-                                                        exit();
-                                                    } else {
-                                                        $newPwdHashed = password_hash($pass, PASSWORD_DEFAULT);
-                                                        mysqli_stmt_bind_param($stmt, 'ss', $newPwdHashed, $tokenEmail);
-                                                        $this->db->call_function('stmt_execute', $stmt);
-
-                                                        $sql = "DELETE FROM pwdreset WHERE pwdResetEmail = ?";
-                                                        $stmt = $this->db->call_function('stmt_init', $conn);
-                                                        if (!$this->db->call_function('stmt_prepare', $stmt, $sql)) {
-                                                            $register = base_url("/index.php/backend/resetPassword?error=sqlerror7&selector=$selector&validator=$validator");
-                                                            header("Location: $register");
-                                                            exit();
-                                                        } else {
-                                                            // kembali ketika berhasil update password
-                                                            mysqli_stmt_bind_param($stmt, 's', $tokenEmail);
-                                                            $this->db->call_function('stmt_execute', $stmt);
-                                                            $register = base_url("index.php/backend/login?newpwd=passwordupdated");
-                                                            header("Location: $register");
-                                                        }
-                                                    }
-                                                } else { //jika email tidak ditemukan di database manapun
-                                                    $register = base_url("/index.php/backend/resetPassword?error=emailnotfound&selector=$selector&validator=$validator");
-                                                    header("Location: $register");
-                                                    exit();
-                                                }
-                                            }
-                                        }
+                                    } else { //jika email tidak ditemukan di database manapun
+                                        $register = base_url("/index.php/backend/resetPassword?error=emailnotfound&selector=$selector&validator=$validator");
+                                        header("Location: $register");
+                                        exit();
                                     }
                                 }
                             }
