@@ -642,7 +642,7 @@
     </a>
 
     <!-- Logout Modal-->
-    <?php include 'backend-logout-modal.php' ?>
+    <?php include 'C:\xampp\htdocs\CodeIgniter\application\views\backend\includes\backend-logout-modal.php'; ?>
     <!--x-- Logout Modal--x-->
 
     <!-- Bootstrap core JavaScript-->
