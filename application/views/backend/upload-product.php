@@ -1,100 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<style>
-    input[id=in] {
-        width: 150%;
-        border-width: 10px solid #aaa;
-        border-radius: 4px;
-        margin: 8px 0;
-        outline: none;
-        padding: 8px;
-        box-sizing: border-box;
-        transition: .2s;
-    }
-
-    select[id="pilih"] {
-        width: 150%;
-        border-width: 10px solid #aaa;
-        border-radius: 4px;
-        margin: 8px 0;
-        outline: none;
-        padding: 8px;
-        box-sizing: border-box;
-        transition: .2s;
-    }
-
-    select[id="pilih"]:focus {
-        border-color: dodgerblue;
-        box-shadow: 0 0 8px dodgerblue;
-    }
-
-    input[id=in]:focus {
-        border-color: dodgerblue;
-        box-shadow: 0 0 8px dodgerblue;
-    }
-
-    textarea {
-        width: 150%;
-        border-width: 10px solid #aaa;
-        border-radius: 4px;
-        margin: 8px 0;
-        outline: none;
-        padding: 8px;
-        box-sizing: border-box;
-        transition: .2s;
-    }
-
-    textarea:focus {
-        border-color: dodgerblue;
-        box-shadow: 0 0 8px dodgerblue;
-    }
-
-    .inputWithIcon input[id=in] {
-        padding-left: 40px;
-    }
-
-    .inputWithIcon {
-        position: relative;
-    }
-
-    .inputWithIcon i {
-        position: absolute;
-        left: 0;
-        top: 8px;
-        padding: 15px 15px;
-        color: #aaa;
-        transition: .2s
-    }
-
-    .inputWithIcon input[id=in]:focus+i {
-        color: dodgerblue;
-    }
-
-    .image-upload-wrap {
-        text-align: center;
-        height: 200px;
-        width: 150%;
-        margin-top: 10px;
-        border: 3px dashed;
-        position: relative;
-        transition: .2s
-    }
-
-    .image-dropping,
-    .image-upload-wrap:hover {
-        background-color: #fff;
-        border: 3px dashed dodgerblue;
-    }
-
-    .file-upload-content {
-        text-align: left;
-        margin-top: 10px;
-        position: relative;
-        transition: .2s
-    }
-</style>
-
 <head>
 
     <meta charset="utf-8">
@@ -115,6 +21,7 @@
     <link href="<?php echo base_url(); ?>/resources/css/sb-admin.css" rel="stylesheet">
     <!-- font awsome -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>/resources/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>/resources/css/upload-product.css">
 
     <script src="<?php echo base_url(); ?>/resources/js/upload3.js"></script>
 </head>
@@ -145,37 +52,37 @@
                         <div class="section-top-border">
                             <div class="col-lg-8 col-md-8">
                                 <p class="mb-10">Isi form dengan lengkap!</p>
-                                <form action="#">
+                                <form action="<?php echo base_url(); ?>index.php/backend/uploadProductReq" method="POST" enctype="multipart/form-data">
                                     <div class="inputWithIcon mt-10">
-                                        <input id="in" type="text" placeholder="Judul Property">
+                                        <input id="in" type="text" placeholder="Judul Property" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Judul Property'" required>
                                         <i class="fa fa-building fa-lg fa-fw" aria-hidden="true"></i>
                                     </div>
                                     <div class="inputWithIcon mt-10">
-                                        <input id="in" type="text" placeholder="Nama Property">
+                                        <input id="in" type="text" placeholder="Nama Property" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nama Property'" required>
                                         <i class="fas fa-font fa-lg fa-fw" aria-hidden="true"></i>
                                     </div>
                                     <div class="inputWithIcon mt-10">
-                                        <input id="in" type="number" placeholder="Luas Tanah">
+                                        <input id="in" type="number" placeholder="Luas Tanah" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Luas Tanah'" required>
                                         <i class="fas fa-ruler-combined fa-lg fa-fw" aria-hidden="true"></i>
                                     </div>
                                     <div class="inputWithIcon mt-10">
-                                        <input id="in" type="number" placeholder="Luas Bangunan">
+                                        <input id="in" type="number" placeholder="Luas Bangunan" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Luas Bangunan'" required>
                                         <i class="fas fa-ruler-horizontal fa-lg fa-fw" aria-hidden="true"></i>
                                     </div>
                                     <div class="inputWithIcon mt-10">
-                                        <input id="in" type="number" placeholder="Jumlah Kamar Tidur">
+                                        <input id="in" type="number" placeholder="Jumlah Kamar Tidur" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Jumlah Kamar Tidur'" required>
                                         <i class="fas fa-bed fa-lg fa-fw" aria-hidden="true"></i>
                                     </div>
                                     <div class="inputWithIcon mt-10">
-                                        <input id="in" type="number" placeholder="Jumlah Kamar Mandi">
+                                        <input id="in" type="number" placeholder="Jumlah Kamar Mandi" onfocus="this.placeholder = ''" onblur="this.placeholder = 'MJumlah Kamar Mandiessage'" required>
                                         <i class="fas fa-bath fa-lg fa-fw" aria-hidden="true"></i>
                                     </div>
                                     <div class="inputWithIcon mt-10">
-                                        <input id="in" type="number" placeholder="Daya Listrik">
+                                        <input id="in" type="number" placeholder="Daya Listrik" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Daya Listrik'" required>
                                         <i class="far fa-lightbulb fa-lg fa-fw" aria-hidden="true"></i>
                                     </div>
                                     <div class="inputWithIcon mt-10">
-                                        <input id="in" type="text" placeholder="Alamat">
+                                        <input id="in" type="text" placeholder="Alamat" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Alamat'" required>
                                         <i class="fa fa-thumb-tack fa-lg fa-fw" aria-hidden="true"></i>
                                     </div>
                                     <div class="input-group-icon mt-10">
@@ -198,20 +105,28 @@
                                             </select>
                                         </div>
                                     </div>
+                                    <div class="inputWithIcon mt-10">
+                                        <input id="in" type="text" placeholder="Harga" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Harga'" required>
+                                        <i class="fas fa-money-bill-wave" aria-hidden="true"></i>
+                                    </div>
                                     <div class="mt-10">
                                         <textarea class="single-textarea" placeholder="Message" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Message'" required></textarea>
                                     </div>
-                                    <div class="image-upload-wrap">
-                                        <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
-                                        <div class="drag-text">
-                                            <h3>Drag and drop a file or select add Image</h3>
+                                    <div id="upload">
+                                        <div id="drop">
+                                            Drop Here
+
+                                            <a>Browse</a>
+                                            <input type="file" name="upl" multiple />
                                         </div>
+
+                                        <ul>
+                                            <!-- The file uploads will be shown here -->
+                                        </ul>
                                     </div>
-                                    <div class="file-upload-content">
-                                        <img class="file-upload-image" src="#" alt="your image" />
-                                        <div class="image-title-wrap">
-                                            <button type="button" onclick="removeUpload()" class="remove-image">Remove</button>
-                                        </div>
+
+                                    <div class="">
+                                        <input class="btn btn-primary btn-block" style="width: 150%;" type="submit" name="submit" value="submit">
                                     </div>
                                 </form>
                             </div>
@@ -258,6 +173,13 @@
     <!-- Demo scripts for this page-->
     <script src="<?php echo base_url(); ?>/resources/js/demo/datatables-demo.js"></script>
     <script src="<?php echo base_url(); ?>/resources/js/demo/chart-area-demo.js"></script>
+    <!-- jQuery File Upload Dependencies -->
+    <script src="<?php echo base_url(); ?>/resources/js/jquery.ui.widget.js"></script>
+    <script src="<?php echo base_url(); ?>/resources/js/jquery.iframe-transport.js"></script>
+    <script src="<?php echo base_url(); ?>/resources/js/jquery.fileupload.js"></script>
+
+    <!-- Our main JS file -->
+    <script src="<?php echo base_url(); ?>/resources/js/script.js"></script>
 
 </body>
 
