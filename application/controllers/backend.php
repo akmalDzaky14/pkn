@@ -74,6 +74,7 @@ class backend extends CI_Controller
     }
     public function uploadProductReq()
     {
+        $this->load->database();
         $this->load->view('/backend/includes/upload-product.inc.php');
     }
     public function signup()
