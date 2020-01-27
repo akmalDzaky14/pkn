@@ -34,6 +34,7 @@ if (isset($_POST['login'])) {
                     session_start();
                     $_SESSION['userID'] = $row['id'];
                     $_SESSION['username'] = $row['uid'];
+                    $_SESSION['status'] = 'user';
 
                     $register = base_url("/index.php?login=success");
                     header("refresh:1;url=$register");
@@ -65,6 +66,7 @@ if (isset($_POST['login'])) {
                             session_start();
                             $_SESSION['userID'] = $row['id'];
                             $_SESSION['username'] = $row['uid'];
+                            $_SESSION['status'] = 'agent';
 
                             $register = base_url("/index.php?login=success");
                             header("refresh:1;url=$register");
@@ -96,6 +98,7 @@ if (isset($_POST['login'])) {
                                     session_start();
                                     $_SESSION['userID'] = $row['id'];
                                     $_SESSION['username'] = $row['uid'];
+                                    $_SESSION['status'] = 'admin';
 
                                     $register = base_url("/index.php?login=success");
                                     header("refresh:1;url=$register");
