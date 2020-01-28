@@ -51,6 +51,7 @@ class Home extends CI_Controller
 
     public function input()
     {
+        $this->load->database();
         $this->load->view('inputnew');
     }
     public function tag()

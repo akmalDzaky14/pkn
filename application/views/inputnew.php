@@ -1,7 +1,8 @@
-
 <html>
+
+
 <head>
-<meta charset="utf-8">
+    <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Travelo</title>
     <meta name="description" content="">
@@ -33,9 +34,25 @@
 </head>
 
 <body>
-    <?php include "header.php" ?>
-
-
+    <?php
+    include "header.php";
+    include('C:\xampp\htdocs\CodeIgniter\application\views\backend\includes\dbHandler.inc.php');
+    if (($_GET['token'])) {
+        //cek token
+        $tokenSite = $_GET['token'];
+        $sql = "SELECT * FROM `posting_list` WHERE token = ? ;";
+        $stmt = $this->db->call_function('stmt_init', $conn);
+        if (!$this->db->call_function('stmt_prepare', $stmt, $sql)) {
+            $register = base_url("index.php/backend/register?error=sqlerror1");
+            header("Location: $register");
+            exit();
+        } else {
+            mysqli_stmt_bind_param($stmt, 's', $tokenSite);
+            $this->db->call_function('stmt_execute', $stmt);
+            $result = $this->db->call_function('stmt_get_result', $stmt);
+        }
+    }
+    ?>
     <div class="table-box">
         <div class="table-row table-head">
             <div class="table-cell first-cell">
@@ -54,10 +71,16 @@
                 <p>Nama properti</p>
             </div>
             <div class="table-cell">
-                <p>apt sudirman</p>
+                <p><?php
+                    foreach ($result as $key) {
+                        echo $key['nama_property'];
+
+                    ?>
+                </p>
             </div>
             <div class="table-cell last-cell">
-                <a href="">buy now</a>
+                <a href=""><?php echo $key['luas_tanah'];
+                        } ?></a>
             </div>
         </div>
 
