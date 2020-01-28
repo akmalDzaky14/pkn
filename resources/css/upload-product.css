@@ -1,0 +1,178 @@
+input[id=in] {
+    width: 150%;
+    border-width: 10px solid #aaa;
+    border-radius: 4px;
+    margin: 8px 0;
+    outline: none;
+    padding: 8px;
+    box-sizing: border-box;
+    transition: .2s;
+}
+
+select[id="pilih"] {
+    width: 150%;
+    border-width: 10px solid #aaa;
+    border-radius: 4px;
+    margin: 8px 0;
+    outline: none;
+    padding: 8px;
+    box-sizing: border-box;
+    transition: .2s;
+}
+
+select[id="pilih"]:focus {
+    border-color: dodgerblue;
+    box-shadow: 0 0 8px dodgerblue;
+}
+
+input[id=in]:focus {
+    border-color: dodgerblue;
+    box-shadow: 0 0 8px dodgerblue;
+}
+
+textarea {
+    width: 150%;
+    border-width: 10px solid #aaa;
+    border-radius: 4px;
+    margin: 8px 0;
+    outline: none;
+    padding: 8px;
+    box-sizing: border-box;
+    transition: .2s;
+}
+
+textarea:focus {
+    border-color: dodgerblue;
+    box-shadow: 0 0 8px dodgerblue;
+}
+
+.inputWithIcon input[id=in] {
+    padding-left: 40px;
+}
+
+.inputWithIcon {
+    position: relative;
+}
+
+.inputWithIcon i {
+    position: absolute;
+    left: 0;
+    top: 8px;
+    padding: 15px 15px;
+    color: #aaa;
+    transition: .2s
+}
+
+.inputWithIcon input[id=in]:focus+i {
+    color: dodgerblue;
+}
+
+a,
+a:visited {
+    outline: none;
+    color: #389dc1;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+section,
+footer,
+header,
+aside {
+    display: block;
+}
+
+#drop {
+    background-color: #fff;
+    width: 150%;
+    padding: 30px;
+    margin-bottom: 30px;
+    border: 1px solid #aaa;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: bold;
+    color: #7f858a;
+}
+
+#drop a {
+    background-color: #007a96;
+    padding: 12px 26px;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 2px;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 12px;
+    line-height: 1;
+}
+
+#drop a:hover {
+    background-color: #0986a3;
+}
+
+#drop input {
+    display: none;
+}
+
+#upload ul {
+    width: 150%;
+    list-style: none;
+    background-color: #333639;
+}
+
+#upload ul li {
+    background-color: #333639;
+    height: 70px;
+    position: relative;
+}
+
+#upload ul li input {
+    display: none;
+}
+
+#upload ul li p {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    color: #EEE;
+    font-size: 16px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    left: 30px;
+}
+
+#upload ul li i {
+    font-weight: normal;
+    font-style: normal;
+    color: #7f7f7f;
+    display: block;
+}
+
+#upload ul li canvas {
+    top: 15px;
+    left: 32px;
+    position: absolute;
+}
+
+#upload ul li span {
+    width: 15px;
+    height: 12px;
+    background: url('../img/icons.png') no-repeat;
+    position: absolute;
+    top: 30px;
+    right: 33px;
+    cursor: pointer;
+}
+
+#upload ul li.working span {
+    height: 16px;
+    background-position: 0 -12px;
+}
+
+#upload ul li.error p {
+    color: red;
+}

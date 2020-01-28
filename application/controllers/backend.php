@@ -53,20 +53,29 @@ class backend extends CI_Controller
     }
     public function register()
     {
-        $this->load->view('/backend/register');
+        $this->load->view('/backend/Session/User/register');
     }
     public function adminReg()
     {
-        $this->load->view('/backend/registerAdmin');
+        $this->load->view('/backend/Session/Admin/registerAdmin');
     }
     public function agentReg()
     {
-        $this->load->view('/backend/registerAgen');
+        $this->load->view('/backend/Session/Agent/registerAgen');
     }
 
     public function upload()
     {
         $this->load->view('/backend/includes/dbHandler');
+    }
+    public function uploadProduct()
+    {
+        $this->load->view('/backend/upload-product');
+    }
+    public function uploadProductReq()
+    {
+        $this->load->database();
+        $this->load->view('/backend/includes/upload-product.inc.php');
     }
     public function signup()
     {

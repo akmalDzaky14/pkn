@@ -19,9 +19,10 @@
 ## Download and Installation
 
 To begin using this template, choose one of the following options to get started:
+
 * [Download the latest release on Start Bootstrap](https://startbootstrap.com/template-overviews/sb-admin/)
-* Install via npm: `npm i startbootstrap-sb-admin`
-* Clone the repo: `git clone https://github.com/BlackrockDigital/startbootstrap-sb-admin.git`
+* Install via npm: `npm i startbootstrap-sb-admin` 
+* Clone the repo: `git clone https://github.com/BlackrockDigital/startbootstrap-sb-admin.git` 
 * [Fork, Clone, or Download on GitHub](https://github.com/BlackrockDigital/startbootstrap-sb-admin)
 
 ## Usage
@@ -36,11 +37,11 @@ After installation, run `npm install` and then run `npm start` which will open u
 
 #### Gulp Tasks
 
-- `gulp` the default task that builds everything
-- `gulp dev` browserSync opens the project in your default browser and live reloads when changes are made
-- `gulp css` compiles SCSS files into CSS and minifies the compiled CSS
-- `gulp js` minifies the themes JS file
-- `gulp vendor` copies dependencies from node_modules to the vendor directory
+* `gulp` the default task that builds everything
+* `gulp dev` browserSync opens the project in your default browser and live reloads when changes are made
+* `gulp css` compiles SCSS files into CSS and minifies the compiled CSS
+* `gulp js` minifies the themes JS file
+* `gulp vendor` copies dependencies from node_modules to the vendor directory
 
 ## Bugs and Issues
 
@@ -68,3 +69,4 @@ Start Bootstrap is based on the [Bootstrap](http://getbootstrap.com/) framework 
 ## Copyright and License
 
 Copyright 2013-2019 Blackrock Digital LLC. Code released under the [MIT](https://github.com/BlackrockDigital/startbootstrap-sb-admin/blob/gh-pages/LICENSE) license.
+
