@@ -70,12 +70,33 @@ class backend extends CI_Controller
     }
     public function uploadProduct()
     {
-        $this->load->view('/backend/upload-product');
+        $this->load->view('/backend/upload-product', array('error' => ' '));
+
     }
     public function uploadProductReq()
     {
         $this->load->database();
         $this->load->view('/backend/includes/upload-product.inc.php');
+        function __construct()
+        {
+            parent::__construct();
+            $this->load->helper(array('form', 'url'));
+        }
+            $config['upload_path']          = 'C:\xampp\htdocs\CodeIgniter\gambar';
+            $config['allowed_types']        = 'gif|jpg|png'; // file yang di perbolehkan 
+            $config['max_size']             = 1000; // maksimal ukuran
+            $config['max_width']            = 2000; //lebar maksimal
+            $config['max_height']           = 1000;  //tinggi maksimal
+    
+            $this->load->library('upload', $config);
+    
+            if (!$this->upload->do_upload('berkas')) {
+                $error = array('error' => $this->upload->display_errors());
+                $this->load->view('upload-product', $error);
+            } else {
+                $data = array('upload_data' => $this->upload->data());
+                $this->load->view('C:\xampp\htdocs\CodeIgniter\application\views\v_upload_sukses.php', $data);
+            }
     }
     public function signup()
     {
@@ -111,4 +132,6 @@ class backend extends CI_Controller
     {
         $this->load->view('/backend/tables');
     }
+   
+   
 }

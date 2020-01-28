@@ -6,6 +6,7 @@ class Home extends CI_Controller
     public function index()
     {
         $this->load->view('site');
+        
     }
     public function about()
     {
@@ -48,4 +49,5 @@ class Home extends CI_Controller
     {
         $this->load->view('/Upload/detail.php');
     }
+   
 }
