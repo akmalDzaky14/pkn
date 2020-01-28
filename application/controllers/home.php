@@ -48,4 +48,8 @@ class Home extends CI_Controller
     {
         $this->load->view('/Upload/detail.php');
     }
+    public function input()
+    {
+        $this->load->view('inputnew');
+    }
 }
