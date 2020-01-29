@@ -59,7 +59,7 @@
                         <div class="section-top-border">
                             <div class="col-lg-8 col-md-8">
                                 <p class="mb-10">Isi form dengan lengkap!</p>
-                                <form action="<?php echo base_url(); ?>index.php/backend/uploadProductReq" method="POST" enctype="backend/aksi_upload">
+                                <?php echo form_open_multipart('backend/uploadProductReq');?>
                                     <div class="inputWithIcon mt-10">
                                         <input id="in" name="namaProperty" type="text" placeholder="Nama Property" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nama Property'" required>
                                         <i class="fas fa-font fa-lg fa-fw" aria-hidden="true"></i>
@@ -112,7 +112,6 @@
                                     </div>
                                     <div class="mt-10">
                                         <?php echo $error; ?>
-                                        <?php echo form_open_multipart('upload/uploadProductReq');?>
                                         <input type="file" name="berkas" />
                                         <br></br>
                                     </div>
