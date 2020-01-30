@@ -1,23 +1,32 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
+session_start();
 
 class backend extends CI_Controller
 {
     public function index()
     {
-        $this->load->view('/backend/404');
+        if (isset($_SESSION['userID'])) {
+            if (isset($_SESSION['status']) == 'admin') {
+                $this->load->view('/backend/index');
+            } else {
+                $this->load->view('/backend/404');
+            }
+        } else {
+            $this->load->view('/backend/404');
+        }
     }
     public function main()
     {
-        $this->load->view('/backend/index');
-    }
-    public function notFound()
-    {
-        $this->load->view('/backend/404');
-    }
-    public function test()
-    {
-        $this->load->view('/backend/test');
+        if (isset($_SESSION['userID'])) {
+            if (isset($_SESSION['status']) == 'admin') {
+                $this->load->view('/backend/index');
+            } else {
+                $this->load->view('/backend/404');
+            }
+        } else {
+            $this->load->view('/backend/404');
+        }
     }
     public function blank()
     {
@@ -63,7 +72,6 @@ class backend extends CI_Controller
     {
         $this->load->view('/backend/Session/Agent/registerAgen');
     }
-
     public function upload()
     {
         $this->load->view('/backend/includes/dbHandler');
@@ -109,6 +117,7 @@ class backend extends CI_Controller
     }
     public function tables()
     {
+        $this->load->database();
         $this->load->view('/backend/tables');
     }
 }

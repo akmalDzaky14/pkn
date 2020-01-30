@@ -41,7 +41,8 @@
                 if (empty($selector) || empty($validator)) {
                     echo  '<p style="color: red; text-align: center;">Could not validate your request!</p>'; ?>
                     <div class="text-center">
-                        <a class="d-block small mt-3" href="<?php echo base_url(); ?>index.php/backend/register">Register an Account</a>
+                        <a class="d-block small mt-3" href="<?php echo base_url(); ?>index.php/backend/login">Login</a>
+                        <a class="d-block small" href="<?php echo base_url(); ?>index.php/backend/register">Register an Account</a>
                         <a class="d-block small" href="<?php echo base_url(); ?>index.php/backend/forgot">Forgot Password?</a>
                         <a class="d-block small" href="<?php echo base_url(); ?>" class="tombol">Home</a>
                     </div>
@@ -79,7 +80,8 @@
                             <input class="btn btn-primary btn-block" type="submit" name="reset-pass-submit" value="Reset Password">
                         </form>
                         <div class="text-center">
-                            <a class="d-block small mt-3" href="<?php echo base_url(); ?>index.php/backend/register">Register an Account</a>
+                            <a class="d-block small mt-3" href="<?php echo base_url(); ?>index.php/backend/login">Login</a>
+                            <a class="d-block small" href="<?php echo base_url(); ?>index.php/backend/register">Register an Account</a>
                             <a class="d-block small" href="<?php echo base_url(); ?>index.php/backend/forgot">Forgot Password?</a>
                             <a class="d-block small" href="<?php echo base_url(); ?>" class="tombol">Home</a>
                         </div>
