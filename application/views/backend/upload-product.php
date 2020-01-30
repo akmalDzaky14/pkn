@@ -51,13 +51,15 @@
                         if (isset($_GET['upload'])) {
                             if ($_GET['upload'] == "success") {
                                 echo '<p style="color: green; text-align: center;">Upload Success!</p>';
+                            }elseif ($_GET['upload'] == "failed1") {
+                                echo '<p style="color: red; text-align: center;">Upload failed!</p>';
                             }
                         } ?>
                         <h3 class="mb-10">Form</h3>
                         <div class="section-top-border">
                             <div class="col-lg-8 col-md-8">
                                 <p class="mb-10">Isi form dengan lengkap!</p>
-                                <form action="<?php echo base_url(); ?>index.php/backend/uploadProductReq" method="POST" enctype="multipart/form-data">
+                                <?php echo form_open_multipart('backend/uploadProductReq');?>
                                     <div class="inputWithIcon mt-10">
                                         <input id="in" name="namaProperty" type="text" placeholder="Nama Property" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nama Property'" required>
                                         <i class="fas fa-font fa-lg fa-fw" aria-hidden="true"></i>
@@ -108,6 +110,12 @@
                                     <div class="mt-10">
                                         <textarea name="pesan" class="single-textarea" placeholder="Message" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Message'" required></textarea>
                                     </div>
+                                    <div class="mt-10">
+                                        <?php echo $error; ?>
+                                        <input type="file" name="berkas" />
+                                        <br></br>
+                                    </div>
+
                                     <div class="">
                                         <input class="btn btn-primary btn-block" style="width: 150%;" type="submit" name="submit" value="submit">
                                     </div>

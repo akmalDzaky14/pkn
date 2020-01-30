@@ -48,7 +48,7 @@ if (isset($_POST['submit'])) {
         $sql = "INSERT INTO posting_list (nama_property,luas_tanah, luas_bangunan ,jk_tidur , jk_mandi, daya_listrik, alamat, harga, pesan, kategori, jenis, token) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
         $stmt = $this->db->call_function('stmt_init', $conn);
         if (!$this->db->call_function('stmt_prepare', $stmt, $sql)) {
-            $register = base_url("index.php/backend/register?error=sqlerror3");
+            $register = base_url("index.php/backend/uploadProduct?upload=failed1");
             header("Location: $register");
             exit();
         } else {

@@ -4,6 +4,8 @@ session_start();
 
 class backend extends CI_Controller
 {
+    
+
     public function index()
     {
         if (isset($_SESSION['userID'])) {
@@ -78,12 +80,35 @@ class backend extends CI_Controller
     }
     public function uploadProduct()
     {
-        $this->load->view('/backend/upload-product');
+        $this->load->helper('form');
+        $this->load->view('/backend/upload-product', array('error' => ' '));
+     
     }
     public function uploadProductReq()
     {
+        $config['upload_path']          = './gambar';
+            $config['allowed_types']        = 'gif|jpg|png'; // file yang di perbolehkan 
+            $config['max_size']             = 1000; // maksimal ukuran
+            $config['max_width']            = 2000; //lebar maksimal
+            $config['max_height']           = 1000;  //tinggi maksimal
+    
+            $this->load->library('upload', $config);
+    
+            if (!$this->upload->do_upload('berkas')) {
+                $error = array('error' => $this->upload->display_errors());
+                $this->load->view('upload-product', $error);
+            } else {
+                $data = array('upload_data' => $this->upload->data());
+                $this->load->view('./v_upload_sukses.php', $data);
+            }
         $this->load->database();
         $this->load->view('/backend/includes/upload-product.inc.php');
+        function __construct()
+        {
+            parent::__construct();
+            $this->load->helper(array('form', 'url'));
+        }
+            
     }
     public function signup()
     {
