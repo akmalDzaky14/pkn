@@ -51,7 +51,7 @@
                         if (isset($_GET['upload'])) {
                             if ($_GET['upload'] == "success") {
                                 echo '<p style="color: green; text-align: center;">Upload Success!</p>';
-                            }elseif ($_GET['upload'] == "failed1") {
+                            } elseif ($_GET['upload'] == "failed1") {
                                 echo '<p style="color: red; text-align: center;">Upload failed!</p>';
                             }
                         } ?>
@@ -59,66 +59,66 @@
                         <div class="section-top-border">
                             <div class="col-lg-8 col-md-8">
                                 <p class="mb-10">Isi form dengan lengkap!</p>
-                                <?php echo form_open_multipart('backend/uploadProductReq');?>
-                                    <div class="inputWithIcon mt-10">
-                                        <input id="in" name="namaProperty" type="text" placeholder="Nama Property" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nama Property'" required>
-                                        <i class="fas fa-font fa-lg fa-fw" aria-hidden="true"></i>
+                                <?php echo form_open_multipart('backend/uploadProductReq'); ?>
+                                <div class="inputWithIcon mt-10">
+                                    <input id="in" name="namaProperty" type="text" placeholder="Nama Property" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nama Property'" required>
+                                    <i class="fas fa-font fa-lg fa-fw" aria-hidden="true"></i>
+                                </div>
+                                <div class="inputWithIcon mt-10">
+                                    <input id="in" name="luasTanah" type="number" placeholder="Luas Tanah" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Luas Tanah'" required>
+                                    <i class="fas fa-ruler-combined fa-lg fa-fw" aria-hidden="true"></i>
+                                </div>
+                                <div class="inputWithIcon mt-10">
+                                    <input id="in" name="luasBangunan" type="number" placeholder="Luas Bangunan" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Luas Bangunan'" required>
+                                    <i class="fas fa-ruler-horizontal fa-lg fa-fw" aria-hidden="true"></i>
+                                </div>
+                                <div class="inputWithIcon mt-10">
+                                    <input id="in" name="JKT" type="number" placeholder="Jumlah Kamar Tidur" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Jumlah Kamar Tidur'" required>
+                                    <i class="fas fa-bed fa-lg fa-fw" aria-hidden="true"></i>
+                                </div>
+                                <div class="inputWithIcon mt-10">
+                                    <input id="in" name="JKM" type="number" placeholder="Jumlah Kamar Mandi" onfocus="this.placeholder = ''" onblur="this.placeholder = 'MJumlah Kamar Mandiessage'" required>
+                                    <i class="fas fa-bath fa-lg fa-fw" aria-hidden="true"></i>
+                                </div>
+                                <div class="inputWithIcon mt-10">
+                                    <input id="in" name="dayaListrik" type="number" placeholder="Daya Listrik" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Daya Listrik'" required>
+                                    <i class="far fa-lightbulb fa-lg fa-fw" aria-hidden="true"></i>
+                                </div>
+                                <div class="inputWithIcon mt-10">
+                                    <input id="in" name="alamat" type="text" placeholder="Alamat" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Alamat'" required>
+                                    <i class="fa fa-thumb-tack fa-lg fa-fw" aria-hidden="true"></i>
+                                </div>
+                                <div class="input-group-icon mt-10">
+                                    <div class="form-select" id="default-select">
+                                        <select id="pilih" name="Kategori">
+                                            <option selected disabled>Kategori</option>
+                                            <option value="Rumah">Rumah</option>
+                                            <option value="Apartemen">Apartemen</option>
+                                        </select>
+                                        <select id="pilih" name="Jenis">
+                                            <option selected disabled>Jenis</option>
+                                            <option value="Jual">Jual</option>
+                                            <option value="Sewa">Sewa</option>
+                                            <option value="Keduanya">Keduanya</option>
+                                        </select>
                                     </div>
-                                    <div class="inputWithIcon mt-10">
-                                        <input id="in" name="luasTanah" type="number" placeholder="Luas Tanah" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Luas Tanah'" required>
-                                        <i class="fas fa-ruler-combined fa-lg fa-fw" aria-hidden="true"></i>
-                                    </div>
-                                    <div class="inputWithIcon mt-10">
-                                        <input id="in" name="luasBangunan" type="number" placeholder="Luas Bangunan" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Luas Bangunan'" required>
-                                        <i class="fas fa-ruler-horizontal fa-lg fa-fw" aria-hidden="true"></i>
-                                    </div>
-                                    <div class="inputWithIcon mt-10">
-                                        <input id="in" name="JKT" type="number" placeholder="Jumlah Kamar Tidur" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Jumlah Kamar Tidur'" required>
-                                        <i class="fas fa-bed fa-lg fa-fw" aria-hidden="true"></i>
-                                    </div>
-                                    <div class="inputWithIcon mt-10">
-                                        <input id="in" name="JKM" type="number" placeholder="Jumlah Kamar Mandi" onfocus="this.placeholder = ''" onblur="this.placeholder = 'MJumlah Kamar Mandiessage'" required>
-                                        <i class="fas fa-bath fa-lg fa-fw" aria-hidden="true"></i>
-                                    </div>
-                                    <div class="inputWithIcon mt-10">
-                                        <input id="in" name="dayaListrik" type="number" placeholder="Daya Listrik" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Daya Listrik'" required>
-                                        <i class="far fa-lightbulb fa-lg fa-fw" aria-hidden="true"></i>
-                                    </div>
-                                    <div class="inputWithIcon mt-10">
-                                        <input id="in" name="alamat" type="text" placeholder="Alamat" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Alamat'" required>
-                                        <i class="fa fa-thumb-tack fa-lg fa-fw" aria-hidden="true"></i>
-                                    </div>
-                                    <div class="input-group-icon mt-10">
-                                        <div class="form-select" id="default-select">
-                                            <select id="pilih" name="Kategori">
-                                                <option selected disabled>Kategori</option>
-                                                <option value="Rumah">Rumah</option>
-                                                <option value="Apartemen">Apartemen</option>
-                                            </select>
-                                            <select id="pilih" name="Jenis">
-                                                <option selected disabled>Jenis</option>
-                                                <option value="Jual">Jual</option>
-                                                <option value="Sewa">Sewa</option>
-                                                <option value="Keduanya">Keduanya</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="inputWithIcon mt-10">
-                                        <input id="in" name="harga" type="number" placeholder="Harga" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Harga'" required>
-                                        <i class="fas fa-money-bill-wave" aria-hidden="true"></i>
-                                    </div>
-                                    <div class="mt-10">
-                                        <textarea name="pesan" class="single-textarea" placeholder="Message" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Message'" required></textarea>
-                                    </div>
-                                    <div class="mt-10">
-                                        <?php echo $error; ?>
-                                        <input type="file" name="berkas" />
-                                        <br></br>
-                                    </div>
+                                </div>
+                                <div class="inputWithIcon mt-10">
+                                    <input id="in" name="harga" type="number" placeholder="Harga" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Harga'" required>
+                                    <i class="fas fa-money-bill-wave" aria-hidden="true"></i>
+                                </div>
+                                <div class="mt-10">
+                                    <textarea name="pesan" class="single-textarea" placeholder="Message" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Message'" required></textarea>
+                                </div>
+                                <div class="mt-10">
+                                    <?php echo $error; ?>
+                                    <input type="file" name="berkas" />
+                                    <br></br>
+                                </div>
 
-                                    <div class="">
-                                        <input class="btn btn-primary btn-block" style="width: 150%;" type="submit" name="submit" value="submit">
-                                    </div>
+                                <div class="">
+                                    <input class="btn btn-primary btn-block" style="width: 150%;" type="submit" name="submit" value="submit">
+                                </div>
                                 </form>
                             </div>
                         </div>
