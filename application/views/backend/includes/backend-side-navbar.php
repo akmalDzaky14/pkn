@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 ?>
 <ul class="sidebar navbar-nav">
     <?php
@@ -14,6 +14,12 @@ session_start();
         }
     }
     ?>
+    <li class="nav-item">
+        <a class="nav-link" href="<?php echo base_url(); ?>">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Index</span>
+        </a>
+    </li>
     <li class="nav-item <?php echo $main; ?>">
         <a class="nav-link" href="<?php echo base_url(); ?>index.php/backend/main?tab=main">
             <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -39,7 +45,6 @@ session_start();
                     <div class="dropdown-divider"></div>
                     <h6 class="dropdown-header">Other Pages:</h6>
                     <a class="dropdown-item" href="<?php echo base_url(); ?>index.php/backend/uploadProduct">Upload Product</a>
-                    <a class="dropdown-item" href="<?php echo base_url(); ?>index.php/backend/notFound">404 Page</a>
                     <a class="dropdown-item" href="<?php echo base_url(); ?>index.php/backend/blank">Blank Page</a>
                 </div>
             </li>
@@ -47,14 +52,20 @@ session_start();
         }
     }
     ?>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Tables</span></a>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+            <h6 class="dropdown-header">List:</h6>
+            <a class="dropdown-item" href="<?php echo base_url(); ?>index.php/backend/tables?type=Plist">Posting List</a>
+            <a class="dropdown-item" href="<?php echo base_url(); ?>index.php/backend/tables?type=Alist">Admin List</a>
+        </div>
+    </li>
     <li class="nav-item <?php echo $chart; ?>">
         <a class="nav-link" href="<?php echo base_url(); ?>index.php/backend/charts?tab=chart">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Charts</span></a>
-    </li>
-    <li class="nav-item <?php echo $table; ?>">
-        <a class="nav-link" href="<?php echo base_url(); ?>index.php/backend/tables?tab=table">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Tables</span></a>
     </li>
 </ul>

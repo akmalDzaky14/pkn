@@ -31,7 +31,7 @@ if (isset($_POST['login'])) {
                     header("refresh:1;url=$register");
                     exit();
                 } elseif ($pwdCheck == true) {
-                    session_start();
+                    // session_start();
                     $_SESSION['userID'] = $row['id'];
                     $_SESSION['username'] = $row['uid'];
                     $_SESSION['status'] = 'user';
@@ -63,7 +63,7 @@ if (isset($_POST['login'])) {
                             header("refresh:1;url=$register");
                             exit();
                         } elseif ($pwdCheck == true) {
-                            session_start();
+                            // session_start();
                             $_SESSION['userID'] = $row['id'];
                             $_SESSION['username'] = $row['uid'];
                             $_SESSION['status'] = 'agent';
@@ -95,7 +95,7 @@ if (isset($_POST['login'])) {
                                     header("refresh:1;url=$register");
                                     exit();
                                 } elseif ($pwdCheck == true) {
-                                    session_start();
+                                    // session_start();
                                     $_SESSION['userID'] = $row['id'];
                                     $_SESSION['username'] = $row['uid'];
                                     $_SESSION['status'] = 'admin';
