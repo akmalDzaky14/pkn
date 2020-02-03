@@ -68,7 +68,7 @@ if (isset($_POST['login'])) {
                             $_SESSION['username'] = $row['uid'];
                             $_SESSION['status'] = 'agent';
 
-                            $register = base_url("/index.php?login=success");
+                            $register = base_url("/index.php/backend");
                             header("refresh:1;url=$register");
                         } else {
                             $register = base_url("index.php/backend/login?error=agentwrongpass");
@@ -100,7 +100,7 @@ if (isset($_POST['login'])) {
                                     $_SESSION['username'] = $row['uid'];
                                     $_SESSION['status'] = 'admin';
 
-                                    $register = base_url("/index.php?login=success");
+                                    $register = base_url("/index.php/backend");
                                     header("refresh:1;url=$register");
                                 } else {
                                     $register = base_url("index.php/backend/login?error=adminwrongpass");

@@ -59,4 +59,9 @@ class Home extends CI_Controller
         $this->load->database();
         $this->load->view('tag');
     }
+    public function PPlace()
+    {
+        $this->load->database();
+        $this->load->view('popular-place');
+    }
 }

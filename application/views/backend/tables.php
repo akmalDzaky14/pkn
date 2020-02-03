@@ -62,30 +62,35 @@
                   <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                       <tr>
+                        <th>No</th>
                         <th>Nama Property</th>
                         <th>Luas Tanah</th>
                         <th>Luas Bangunan</th>
-                        <th>Jumah Kamar Tidur</th>
-                        <th>Jumah Kamar Mandi</th>
+                        <th>Jumah K. Tidur</th>
+                        <th>Jumah K. Mandi</th>
                         <th>Daya Listrik</th>
                         <th>Alamat</th>
                         <th>Harga</th>
                         <th>Kategori</th>
                         <th>Jenis</th>
+                        <th>Token</th>
                       </tr>
                     </thead>
                     <tfoot>
                       <tr>
+                        <th>No</th>
                         <th>Nama Property</th>
                         <th>Luas Tanah</th>
                         <th>Luas Bangunan</th>
-                        <th>Jumah Kamar Tidur</th>
-                        <th>Jumah Kamar Mandi</th>
+                        <th>Jumah K. Tidur</th>
+                        <th>Jumah K. Mandi</th>
                         <th>Daya Listrik</th>
                         <th>Alamat</th>
                         <th>Harga</th>
                         <th>Kategori</th>
                         <th>Jenis</th>
+                        <th>Token</th>
+
                       </tr>
                     </tfoot>
                     <tbody>
@@ -101,6 +106,7 @@
                         $result = $this->db->call_function('stmt_get_result', $stmt);
                         foreach ($result as $key) {
                           echo '<tr>';
+                          echo '<td>' . $key['id'] . '</td>';
                           echo '<td>' . $key['nama_property'] . '</td>';
                           echo '<td>' . $key['luas_tanah'] . '</td>';
                           echo '<td>' . $key['luas_bangunan'] . '</td>';
@@ -108,9 +114,10 @@
                           echo '<td>' . $key['jk_mandi'] . '</td>';
                           echo '<td>' . $key['daya_listrik'] . '</td>';
                           echo '<td>' . $key['alamat'] . '</td>';
-                          echo '<td>' . $key['harga'] . '</td>';
+                          echo '<td>Rp. ' . $key['harga'] . '</td>';
                           echo '<td>' . $key['kategori'] . '</td>';
                           echo '<td>' . $key['jenis'] . '</td>';
+                          echo '<td>' . $key['token'] . '</td>';
                           echo '</tr>';
                         }
                       }
