@@ -168,19 +168,11 @@
                                 <th>Email</th>
                                 <th>Token</th>
                                 <th>Point</th>
+                                <th>
+                                  Action
+                                </th>
                               </tr>
                             </thead>
-                            <tfoot>
-                              <tr>
-                                <th>No.</th>
-                                <th>Nama depan</th>
-                                <th>Nama belakang</th>
-                                <th>Username</th>
-                                <th>Email</th>
-                                <th>Token</th>
-                                <th>Point</th>
-                              </tr>
-                            </tfoot>
                             <tbody>
                               <?php
                               $sql = "SELECT * FROM `agent_list`;";
@@ -201,6 +193,7 @@
                                   echo '<td>' . $key['email'] . '</td>';
                                   echo '<td>' . $key['token'] . '</td>';
                                   echo '<td>' . $key['point'] . '</td>';
+                                  echo '<td>' . '<a href="' . base_url("backed/edit/") . '"><button class="btn btn-warning"><i class="fa fa-list"></i></button>' . '<button class="btn btn-warning"><i class="fa fa-list"></i></button>' . '</td>';
                                   echo '</tr>';
                                 }
                               }
@@ -214,8 +207,6 @@
                                     <th>Nama belakang</th>
                                     <th>Username</th>
                                     <th>Email</th>
-                                    <a href="<?= base_url('keuanganadm/edit/' . $key->id_keuangan); ?>"><button class="btn btn-warning"><i class="fa fa-list"></i></button></a>
-
                                   </tr>
                                 </thead>
                                 <tfoot>
@@ -225,7 +216,6 @@
                                     <th>Nama belakang</th>
                                     <th>Username</th>
                                     <th>Email</th>
-                                    <a href="<?= base_url('keuanganadm/edit/' . $key->id_keuangan); ?>"><button class="btn btn-warning"><i class="fa fa-list"></i></button></a>
                                   </tr>
                                 </tfoot>
                                 <tbody>
@@ -246,6 +236,7 @@
                                   echo '<td>' . $key['nama_belakang'] . '</td>';
                                   echo '<td>' . $key['uid'] . '</td>';
                                   echo '<td>' . $key['email'] . '</td>';
+
                                   echo '</tr>';
                                 }
                               }
