@@ -64,4 +64,9 @@ class Home extends CI_Controller
         $this->load->database();
         $this->load->view('popular-place');
     }
+    public function konfirmasi()
+    {
+        $this->load->database();
+        $this->load->view('konfirmasi');
+    }
 }
