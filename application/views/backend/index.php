@@ -25,13 +25,13 @@
 <body id="page-top">
 
     <!------ Header ------>
-    <?php include 'backend-header.php'; ?>
+    <?php include 'C:\xampp\htdocs\CodeIgniter\application\views\backend\includes\backend-header.php'; ?>
     <!--x---- Header ----x-->
 
     <!----- Wrapper ----->
     <div id="wrapper">
         <!-- Sidebar -->
-        <?php include 'backend-side-navbar.php'; ?>
+        <?php include 'C:\xampp\htdocs\CodeIgniter\application\views\backend\includes\backend-side-navbar.php'; ?>
         <!--x-- Sidebar --x--->
 
         <!------------- content -------------->
@@ -71,9 +71,9 @@
                                 <div class="card-body-icon">
                                     <i class="fas fa-fw fa-list"></i>
                                 </div>
-                                <div class="mr-5">11 New Tasks!</div>
+                                <div class="mr-5">Posting List!</div>
                             </div>
-                            <a class="card-footer text-white clearfix small z-1" href="#">
+                            <a class="card-footer text-white clearfix small z-1" href="<?php echo base_url(); ?>index.php/backend/tables?tab=table?&type=Plist">
                                 <span class="float-left">View Details</span>
                                 <span class="float-right">
                                     <i class="fas fa-angle-right"></i>
@@ -642,7 +642,7 @@
     </a>
 
     <!-- Logout Modal-->
-    <?php include 'backend-logout-modal.php' ?>
+    <?php include 'C:\xampp\htdocs\CodeIgniter\application\views\backend\includes\backend-logout-modal.php'; ?>
     <!--x-- Logout Modal--x-->
 
     <!-- Bootstrap core JavaScript-->
