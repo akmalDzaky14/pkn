@@ -143,33 +143,116 @@
                           </tr>
                         </tfoot>
                         <tbody>
-                      <?php
-                      $sql = "SELECT * FROM `admin_list`;";
-                      $stmt = $this->db->call_function('stmt_init', $conn);
-                      if (!$this->db->call_function('stmt_prepare', $stmt, $sql)) {
-                        $register = base_url("index.php/backend/register?error=sqlerror1");
-                        header("Location: $register");
-                        exit();
-                      } else {
-                        $this->db->call_function('stmt_execute', $stmt);
-                        $result = $this->db->call_function('stmt_get_result', $stmt);
-                        foreach ($result as $key) {
-                          echo '<tr>';
-                          echo '<td>' . $key['id'] . '</td>';
-                          echo '<td>' . $key['nama_depan'] . '</td>';
-                          echo '<td>' . $key['nama_belakang'] . '</td>';
-                          echo '<td>' . $key['uid'] . '</td>';
-                          echo '<td>' . $key['email'] . '</td>';
-                          echo '</tr>';
-                        }
-                      }
-                    }
-                  } else {
-                    echo '<p>no data selected</p>';
-                  }
-                      ?>
-                        </tbody>
-                      </table>
+                          <?php
+                          $sql = "SELECT * FROM `admin_list`;";
+                          $stmt = $this->db->call_function('stmt_init', $conn);
+                          if (!$this->db->call_function('stmt_prepare', $stmt, $sql)) {
+                            $register = base_url("index.php/backend/register?error=sqlerror1");
+                            header("Location: $register");
+                            exit();
+                          } else {
+                            $this->db->call_function('stmt_execute', $stmt);
+                            $result = $this->db->call_function('stmt_get_result', $stmt);
+                            foreach ($result as $key) {
+                              echo '<tr>';
+                              echo '<td>' . $key['id'] . '</td>';
+                              echo '<td>' . $key['nama_depan'] . '</td>';
+                              echo '<td>' . $key['nama_belakang'] . '</td>';
+                              echo '<td>' . $key['uid'] . '</td>';
+                              echo '<td>' . $key['email'] . '</td>';
+                              echo '</tr>';
+                            }
+                          }
+                        } else if ($_GET['type'] == "Glist") {
+                          ?>
+                          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                              <tr>
+                                <th>No.</th>
+                                <th>Nama depan</th>
+                                <th>Nama belakang</th>
+                                <th>Username</th>
+                                <th>Email</th>
+                                <th>Token</th>
+                                <th>Point</th>
+                                <th>
+                                  Action
+                                </th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <?php
+                              $sql = "SELECT * FROM `agent_list`;";
+                              $stmt = $this->db->call_function('stmt_init', $conn);
+                              if (!$this->db->call_function('stmt_prepare', $stmt, $sql)) {
+                                $register = base_url("index.php/backend/register?error=sqlerror1");
+                                header("Location: $register");
+                                exit();
+                              } else {
+                                $this->db->call_function('stmt_execute', $stmt);
+                                $result = $this->db->call_function('stmt_get_result', $stmt);
+                                foreach ($result as $key) {
+                                  echo '<tr>';
+                                  echo '<td>' . $key['id'] . '</td>';
+                                  echo '<td>' . $key['nama_depan'] . '</td>';
+                                  echo '<td>' . $key['nama_belakang'] . '</td>';
+                                  echo '<td>' . $key['uid'] . '</td>';
+                                  echo '<td>' . $key['email'] . '</td>';
+                                  echo '<td>' . $key['token'] . '</td>';
+                                  echo '<td>' . $key['point'] . '</td>';
+                                  echo '<td>' . '<a href="' . base_url("backed/edit/") . '"><button class="btn btn-warning"><i class="fa fa-list"></i></button>' . '<button class="btn btn-warning"><i class="fa fa-list"></i></button>' . '</td>';
+                                  echo '</tr>';
+                                }
+                              }
+                            } else if ($_GET['type'] == "Ulist") {
+                              ?>
+                              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                  <tr>
+                                    <th>No.</th>
+                                    <th>Nama depan</th>
+                                    <th>Nama belakang</th>
+                                    <th>Username</th>
+                                    <th>Email</th>
+                                  </tr>
+                                </thead>
+                                <tfoot>
+                                  <tr>
+                                    <th>No.</th>
+                                    <th>Nama depan</th>
+                                    <th>Nama belakang</th>
+                                    <th>Username</th>
+                                    <th>Email</th>
+                                  </tr>
+                                </tfoot>
+                                <tbody>
+                              <?php
+                              $sql = "SELECT * FROM `user_list`;";
+                              $stmt = $this->db->call_function('stmt_init', $conn);
+                              if (!$this->db->call_function('stmt_prepare', $stmt, $sql)) {
+                                $register = base_url("index.php/backend/register?error=sqlerror1");
+                                header("Location: $register");
+                                exit();
+                              } else {
+                                $this->db->call_function('stmt_execute', $stmt);
+                                $result = $this->db->call_function('stmt_get_result', $stmt);
+                                foreach ($result as $key) {
+                                  echo '<tr>';
+                                  echo '<td>' . $key['id'] . '</td>';
+                                  echo '<td>' . $key['nama_depan'] . '</td>';
+                                  echo '<td>' . $key['nama_belakang'] . '</td>';
+                                  echo '<td>' . $key['uid'] . '</td>';
+                                  echo '<td>' . $key['email'] . '</td>';
+
+                                  echo '</tr>';
+                                }
+                              }
+                            }
+                          }
+                          echo '<p>no data selected</p>';
+                              ?>
+                                </tbody>
+                              </table>
             </div>
           </div>
           <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
