@@ -146,6 +146,17 @@ class backend extends CI_Controller
     }
     public function edit($id)
     {
-        print_r('halo');die;
+        print_r('halo');
+        die;
+    }
+    public function updateProduct()
+    {
+        $this->load->database();
+        $this->load->view('/backend/includes/updateProduct.inc.php');
+    }
+    public function deleteProduct()
+    {
+        $this->load->database();
+        $this->load->view('/backend/includes/deleteProduct.inc.php');
     }
 }
