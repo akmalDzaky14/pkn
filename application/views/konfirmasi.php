@@ -224,6 +224,23 @@
                 <p>08xxxxxxxxxx</p>
             </div>
         </div>
+        <div class="table-row">
+            <div class="table-cell first-cell">
+                <p>tanggal</p>
+                <input type="date" class="" name="fromDate" id="fromDate">
+            </div>
+            <div class="table-cell">
+                <p></p>
+            </div>
+        </div>
+        <div class="table-row">
+            <div class="table-cell first-cell">
+                <input>Pesan</input>
+            </div>
+            <div class="table-cell">
+                <p></p>
+            </div>
+        </div>
         <div class="col-lg-12">
             <div class="more_place_btn text-center">
                 <a class="boxed-btn4" href="<?php echo base_url() ?>index.php/home/PPlace">Beli</a>
