@@ -225,11 +225,26 @@
             </div>
         </div>
         <div class="table-row">
+        <p>tanggal</p>
             <div class="table-cell first-cell">
                 <p>tanggal</p>
                 <input type="date" name="fromDate" id="fromDate">
                 <p>Pesan</p>
                 <input class="table-row"></input>
+                <input type="date" class="" name="fromDate" id="fromDate">
+            </div>
+            <div class="table-cell">
+                <p></p>
+            </div>
+        </div>
+        <div class="table-row">
+        <p>Pesan</p>
+            <div class="table-cell -cell">
+                <input></input>
+             </div>
+            </div>
+            <div class="table-cell">
+                <p></p>
             </div>
         </div>
         <div class="col-lg-12">
