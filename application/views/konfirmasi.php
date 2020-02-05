@@ -145,29 +145,29 @@
         </div>
     </div>
 
-<?php
-//  if (($_GET['token'])) {
-//     //cek token
-//     $tokenSite = $_GET['token'];
-//     $sql = "SELECT * FROM `user_list` WHERE token = ? ;";
-//     $stmt = $this->db->call_function('stmt_init', $conn);
-//     if (!$this->db->call_function('stmt_prepare', $stmt, $sql)) {
-//         $register = base_url("index.php/backend/register?error=sqlerror1");
-//         header("Location: $register");
-//         exit();
-//     } else {
-//         mysqli_stmt_bind_param($stmt, 's', $tokenSite);
-//         $this->db->call_function('stmt_execute', $stmt);
-//         $result = $this->db->call_function('stmt_get_result', $stmt);
-//     }
-// }
-?>
+    <?php
+    //  if (($_GET['token'])) {
+    //     //cek token
+    //     $tokenSite = $_GET['token'];
+    //     $sql = "SELECT * FROM `user_list` WHERE token = ? ;";
+    //     $stmt = $this->db->call_function('stmt_init', $conn);
+    //     if (!$this->db->call_function('stmt_prepare', $stmt, $sql)) {
+    //         $register = base_url("index.php/backend/register?error=sqlerror1");
+    //         header("Location: $register");
+    //         exit();
+    //     } else {
+    //         mysqli_stmt_bind_param($stmt, 's', $tokenSite);
+    //         $this->db->call_function('stmt_execute', $stmt);
+    //         $result = $this->db->call_function('stmt_get_result', $stmt);
+    //     }
+    // }
+    ?>
 
 
     <div class="table-box">
         <div class="table-row table-head">
             <div class="table-cell first-cell">
-                <p style-color ="#000">Data User</p>
+                <p style-color="#000">Data User</p>
             </div>
         </div>
 
@@ -227,18 +227,9 @@
         <div class="table-row">
             <div class="table-cell first-cell">
                 <p>tanggal</p>
-                <input type="date" class="" name="fromDate" id="fromDate">
-            </div>
-            <div class="table-cell">
-                <p></p>
-            </div>
-        </div>
-        <div class="table-row">
-            <div class="table-cell first-cell">
-                <input>Pesan</input>
-            </div>
-            <div class="table-cell">
-                <p></p>
+                <input type="date" name="fromDate" id="fromDate">
+                <p>Pesan</p>
+                <input class="table-row"></input>
             </div>
         </div>
         <div class="col-lg-12">

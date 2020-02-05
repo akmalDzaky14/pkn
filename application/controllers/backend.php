@@ -144,8 +144,9 @@ class backend extends CI_Controller
         $this->load->database();
         $this->load->view('/backend/tables');
     }
-    public function edit($id)
+    public function notifikasi()
     {
-        print_r('halo');die;
+        $this->load->database();
+        $this->load->view('/notifikasi');
     }
 }

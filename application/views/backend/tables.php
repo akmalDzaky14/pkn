@@ -74,6 +74,7 @@
                         <th>Kategori</th>
                         <th>Jenis</th>
                         <th>Token</th>
+                        <th>Status</th>
                       </tr>
                     </thead>
                     <tfoot>
@@ -90,6 +91,7 @@
                         <th>Kategori</th>
                         <th>Jenis</th>
                         <th>Token</th>
+                        <th>Status</th>
 
                       </tr>
                     </tfoot>
@@ -118,6 +120,7 @@
                           echo '<td>' . $key['kategori'] . '</td>';
                           echo '<td>' . $key['jenis'] . '</td>';
                           echo '<td>' . $key['token'] . '</td>';
+                          echo '<td>' . $key['status'] . '</td>';
                           echo '</tr>';
                         }
                       }
