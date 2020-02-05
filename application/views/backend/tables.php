@@ -66,14 +66,13 @@
                         <th>Nama Property</th>
                         <th>Luas Tanah</th>
                         <th>Luas Bangunan</th>
-                        <th>Jumah K. Tidur</th>
-                        <th>Jumah K. Mandi</th>
+                        <th>Jumah Kamar Tidur</th>
+                        <th>Jumah Kamar Mandi</th>
                         <th>Daya Listrik</th>
                         <th>Alamat</th>
                         <th>Harga</th>
-                        <th>Kategori</th>
-                        <th>Jenis</th>
                         <th>Token</th>
+                        <th>Action</th>
                       </tr>
                     </thead>
                     <tfoot>
@@ -82,15 +81,13 @@
                         <th>Nama Property</th>
                         <th>Luas Tanah</th>
                         <th>Luas Bangunan</th>
-                        <th>Jumah K. Tidur</th>
-                        <th>Jumah K. Mandi</th>
+                        <th>Jumah Kamar Tidur</th>
+                        <th>Jumah Kamar Mandi</th>
                         <th>Daya Listrik</th>
                         <th>Alamat</th>
                         <th>Harga</th>
-                        <th>Kategori</th>
-                        <th>Jenis</th>
                         <th>Token</th>
-
+                        <th>Action</th>
                       </tr>
                     </tfoot>
                     <tbody>
@@ -115,9 +112,12 @@
                           echo '<td>' . $key['daya_listrik'] . '</td>';
                           echo '<td>' . $key['alamat'] . '</td>';
                           echo '<td>Rp. ' . $key['harga'] . '</td>';
-                          echo '<td>' . $key['kategori'] . '</td>';
-                          echo '<td>' . $key['jenis'] . '</td>';
                           echo '<td>' . $key['token'] . '</td>';
+                          echo '<td>' . '<a href="' . base_url() . "index.php/backend/uploadProduct?np=" . $key['nama_property'] . "&lt=" . $key['luas_tanah'] .
+                            "&lb=" . $key['luas_bangunan'] . "&jkt=" . $key['jk_tidur'] . "&jkm=" . $key['jk_mandi'] . "&dl=" . $key['daya_listrik'] .
+                            "&alm=" . $key['alamat'] . "&kt=" . $key['kategori'] . "&jn=" . $key['jenis'] . "&msg=" . $key['pesan'] . "&prc=" . $key['harga'] . "&token=" . $key['token'] .
+                            '"><button class="btn btn-warning"><i class="fa fa-list"></i></button>';
+                          echo '<a onclick="confirmDelete()"><button class="btn btn-warning"><i class="fa fa-trash"></i></button> </td></a>';
                           echo '</tr>';
                         }
                       }
@@ -175,9 +175,6 @@
                                 <th>Email</th>
                                 <th>Token</th>
                                 <th>Point</th>
-                                <th>
-                                  Action
-                                </th>
                               </tr>
                             </thead>
                             <tbody>
@@ -200,7 +197,6 @@
                                   echo '<td>' . $key['email'] . '</td>';
                                   echo '<td>' . $key['token'] . '</td>';
                                   echo '<td>' . $key['point'] . '</td>';
-                                  echo '<td>' . '<a href="' . base_url("backed/edit/") . '"><button class="btn btn-warning"><i class="fa fa-list"></i></button>' . '<button class="btn btn-warning"><i class="fa fa-list"></i></button>' . '</td>';
                                   echo '</tr>';
                                 }
                               }
@@ -249,7 +245,6 @@
                               }
                             }
                           }
-                          echo '<p>no data selected</p>';
                               ?>
                                 </tbody>
                               </table>
@@ -299,6 +294,15 @@
     </div>
   </div>
 
+  <!-- script konfirmasi hapus postingan -->
+  <script type="text/javascript">
+    function confirmDelete() {
+      var a = confirm("Are you sure want to delete the post?")
+      if (a == true) {
+        window.location.href = "<?php echo base_url("index.php/backend/deleteProduct?token=") . $key['token'] ?>";
+      }
+    }
+  </script>
   <!-- Bootstrap core JavaScript-->
   <script src="<?php echo base_url(); ?>/resources/vendor/jquery/jquery.min.js"></script>
   <script src="<?php echo base_url(); ?>/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

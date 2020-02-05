@@ -48,6 +48,18 @@
                         <i class="fas fa-chart-area"></i>Upload Product</div>
                     <div class="card-body">
                         <?php
+                        $np = &$_GET['np'];
+                        $lt = &$_GET['lt'];
+                        $lb = &$_GET['lb'];
+                        $jkm = &$_GET['jkm'];
+                        $jkt = &$_GET['jkt'];
+                        $dl = &$_GET['jkm'];
+                        $alm = &$_GET['alm'];
+                        $kt = &$_GET['kt'];
+                        $jn = &$_GET['jn'];
+                        $msg = &$_GET['msg'];
+                        $prc = &$_GET['prc'];
+                        $token = &$_GET['token'];
                         if (isset($_GET['upload'])) {
                             if ($_GET['upload'] == "success") {
                                 echo '<p style="color: green; text-align: center;">Upload Success!</p>';
@@ -59,56 +71,85 @@
                         <div class="section-top-border">
                             <div class="col-lg-8 col-md-8">
                                 <p class="mb-10">Isi form dengan lengkap!</p>
-                                <?php echo form_open_multipart('backend/uploadProductReq'); ?>
+                                <?php
+                                if (isset($_GET['np'])) {
+                                    echo form_open_multipart('backend/updateProduct');
+                                } else {
+                                    echo form_open_multipart('backend/uploadProductReq');
+                                }
+                                ?>
                                 <div class="inputWithIcon mt-10">
-                                    <input id="in" name="namaProperty" type="text" placeholder="Nama Property" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nama Property'" required>
+                                    <input id="in" value="<?php echo $np ?>" name="namaProperty" type="text" placeholder="Nama Property" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nama Property'" required>
                                     <i class="fas fa-font fa-lg fa-fw" aria-hidden="true"></i>
                                 </div>
                                 <div class="inputWithIcon mt-10">
-                                    <input id="in" name="luasTanah" type="number" placeholder="Luas Tanah" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Luas Tanah'" required>
+                                    <input id="in" value="<?php echo $lt ?>" name="luasTanah" type="number" placeholder="Luas Tanah" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Luas Tanah'" required>
                                     <i class="fas fa-ruler-combined fa-lg fa-fw" aria-hidden="true"></i>
                                 </div>
                                 <div class="inputWithIcon mt-10">
-                                    <input id="in" name="luasBangunan" type="number" placeholder="Luas Bangunan" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Luas Bangunan'" required>
+                                    <input id="in" value="<?php echo $lb ?>" name="luasBangunan" type="number" placeholder="Luas Bangunan" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Luas Bangunan'" required>
                                     <i class="fas fa-ruler-horizontal fa-lg fa-fw" aria-hidden="true"></i>
                                 </div>
                                 <div class="inputWithIcon mt-10">
-                                    <input id="in" name="JKT" type="number" placeholder="Jumlah Kamar Tidur" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Jumlah Kamar Tidur'" required>
+                                    <input id="in" value="<?php echo $jkt ?>" name="JKT" type="number" placeholder="Jumlah Kamar Tidur" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Jumlah Kamar Tidur'" required>
                                     <i class="fas fa-bed fa-lg fa-fw" aria-hidden="true"></i>
                                 </div>
                                 <div class="inputWithIcon mt-10">
-                                    <input id="in" name="JKM" type="number" placeholder="Jumlah Kamar Mandi" onfocus="this.placeholder = ''" onblur="this.placeholder = 'MJumlah Kamar Mandiessage'" required>
+                                    <input id="in" value="<?php echo $jkm ?>" name="JKM" type="number" placeholder="Jumlah Kamar Mandi" onfocus="this.placeholder = ''" onblur="this.placeholder = 'MJumlah Kamar Mandiessage'" required>
                                     <i class="fas fa-bath fa-lg fa-fw" aria-hidden="true"></i>
                                 </div>
                                 <div class="inputWithIcon mt-10">
-                                    <input id="in" name="dayaListrik" type="number" placeholder="Daya Listrik" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Daya Listrik'" required>
+                                    <input type="hidden" value="<?php echo $token ?>" name="token">
+                                    <input id="in" value="<?php echo $dl ?>" name="dayaListrik" type="number" placeholder="Daya Listrik" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Daya Listrik'" required>
                                     <i class="far fa-lightbulb fa-lg fa-fw" aria-hidden="true"></i>
                                 </div>
                                 <div class="inputWithIcon mt-10">
-                                    <input id="in" name="alamat" type="text" placeholder="Alamat" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Alamat'" required>
+                                    <input id="in" value="<?php echo $alm ?>" name="alamat" type="text" placeholder="Alamat" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Alamat'" required>
                                     <i class="fa fa-thumb-tack fa-lg fa-fw" aria-hidden="true"></i>
                                 </div>
                                 <div class="input-group-icon mt-10">
                                     <div class="form-select" id="default-select">
                                         <select id="pilih" name="Kategori">
-                                            <option selected disabled>Kategori</option>
-                                            <option value="Rumah">Rumah</option>
-                                            <option value="Apartemen">Apartemen</option>
+                                            <?php if ($kt == 'Rumah') { ?>
+                                                <option selected value="Rumah">Rumah</option>
+                                                <option value="Apartemen">Apartemen</option>
+                                            <?php } elseif ($kt == 'Apartemen') { ?>
+                                                <option value="Rumah">Rumah</option>
+                                                <option selected value="Apartemen">Apartemen</option>
+                                            <?php } else { ?>
+                                                <option selected disabled>Kategori</option>
+                                                <option value="Rumah">Rumah</option>
+                                                <option value="Apartemen">Apartemen</option>
+                                            <?php } ?>
                                         </select>
                                         <select id="pilih" name="Jenis">
-                                            <option selected disabled>Jenis</option>
-                                            <option value="Jual">Jual</option>
-                                            <option value="Sewa">Sewa</option>
-                                            <option value="Keduanya">Keduanya</option>
+                                            <?php if ($jn == 'Jual') { ?>
+                                                <option selected value="Jual">Jual</option>
+                                                <option value="Sewa">Sewa</option>
+                                                <option value="Keduanya">Keduanya</option>
+                                            <?php } elseif ($jn == 'Sewa') { ?>
+                                                <option value="Jual">Jual</option>
+                                                <option selected value="Sewa">Sewa</option>
+                                                <option value="Keduanya">Keduanya</option>
+                                            <?php } elseif ($jn == 'Keduanya') { ?>
+                                                <option value="Jual">Jual</option>
+                                                <option value="Sewa">Sewa</option>
+                                                <option selected value="Keduanya">Keduanya</option>
+                                            <?php } else { ?>
+                                                <option selected disabled>Jenis</option>
+                                                <option value="Jual">Jual</option>
+                                                <option value="Sewa">Sewa</option>
+                                                <option value="Keduanya">Keduanya</option>
+                                            <?php } ?>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="inputWithIcon mt-10">
-                                    <input id="in" name="harga" type="number" placeholder="Harga" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Harga'" required>
+                                    <input value="<?php echo $prc ?>" id="in" name="harga" type="number" placeholder="Harga" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Harga'" required>
                                     <i class="fas fa-money-bill-wave" aria-hidden="true"></i>
                                 </div>
                                 <div class="mt-10">
-                                    <textarea name="pesan" class="single-textarea" placeholder="Message" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Message'" required></textarea>
+                                    <textarea name="pesan" class="single-textarea" placeholder="Message" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Message'" required><?php echo $msg ?></textarea>
                                 </div>
                                 <div class="mt-10">
                                     <?php echo $error; ?>
@@ -117,7 +158,12 @@
                                 </div>
 
                                 <div class="">
-                                    <input class="btn btn-primary btn-block" style="width: 150%;" type="submit" name="submit" value="submit">
+                                    <?php if (isset($_GET['np'])) { ?>
+                                        <input class="btn btn-primary btn-block" style="width: 150%;" type="submit" name="submit" value="update">
+                                    <?php } else { ?>
+                                        <input class="btn btn-primary btn-block" style="width: 150%;" type="submit" name="submit" value="submit">
+                                    <?php } ?>
+
                                 </div>
                                 </form>
                             </div>
