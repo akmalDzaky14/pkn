@@ -117,7 +117,17 @@
                             "&lb=" . $key['luas_bangunan'] . "&jkt=" . $key['jk_tidur'] . "&jkm=" . $key['jk_mandi'] . "&dl=" . $key['daya_listrik'] .
                             "&alm=" . $key['alamat'] . "&kt=" . $key['kategori'] . "&jn=" . $key['jenis'] . "&msg=" . $key['pesan'] . "&prc=" . $key['harga'] . "&token=" . $key['token'] .
                             '"><button class="btn btn-warning"><i class="fa fa-list"></i></button>';
-                          echo '<a href="' . base_url() . "index.php/backend/deleteProduct?token=" . $key['token'] . '"><button class="btn btn-warning"><i class="fa fa-trash"></i></button> </td>';
+                      ?>
+                          <a onclick="confirmDelete()"><button class="btn btn-warning"><i class="fa fa-trash"></i></button> </td></a>
+                          <script type="text/javascript">
+                            function confirmDelete() {
+                              var a = confirm("Are you sure want to delete the post?")
+                              if (a == true) {
+                                window.location.href = "<?php echo base_url("index.php/backend/deleteProduct?token=") . $key['token'] ?>";
+                              }
+                            }
+                          </script>
+                      <?php
                           echo '</tr>';
                         }
                       }
