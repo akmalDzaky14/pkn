@@ -10,6 +10,7 @@ if (isset($_POST['submit'])) {
     $em = $_POST['email'];
     $pass = $_POST['pass'];
     $confpass = $_POST['confPass'];
+    $phone = $_POST['phoneNumber'];
 
     // cek apakah ada yang kosong saat mengisi form register
     if (empty($fn) || empty($ln) || empty($username) || empty($em) || empty($pass) || empty($confpass)) {
@@ -34,6 +35,16 @@ if (isset($_POST['submit'])) {
     } //cek apakah password dan confirm password sama
     elseif ($pass !== $confpass) {
         $register = base_url("index.php/backend/register?error=passwodchecked&fn="  . $fn . "&ln=" . $ln . "&uid=" . $username . "&email=" . $em);
+        header("Location: $register");
+        exit();
+    } //hanya nomor yang di izinkan pada form nomor telfon
+    elseif (!preg_match("/^[0-9]*$/", $phone)) {
+        $register = base_url("index.php/backend/register?error=phoneInvalid&fn=" . $fn . "&ln=" . $ln . "&uid=" . $username . "&email=" . $em);
+        header("Location: $register");
+        exit();
+    } // dan hanya 12 digit yang di izinkan
+    elseif ($phone < 10 || $phone > 12) {
+        $register = base_url("index.php/backend/register?error=phoneInvalid2&fn=" . $fn . "&ln=" . $ln . "&uid=" . $username . "&email=" . $em);
         header("Location: $register");
         exit();
     } //lanjut jika lolos pemeriksaan tahap 1
@@ -73,7 +84,7 @@ if (isset($_POST['submit'])) {
                         exit();
                     } else {
                         //upload form register ke database
-                        $sql = "INSERT INTO user_list (email,nama_depan ,nama_belakang , password, uid) VALUES (?,?,?,?,?)";
+                        $sql = "INSERT INTO user_list (email,nama_depan ,nama_belakang , password, uid, phone) VALUES (?,?,?,?,?,?)";
                         $stmt = $this->db->call_function('stmt_init', $conn);
                         if (!$this->db->call_function('stmt_prepare', $stmt, $sql)) {
                             $register = base_url("index.php/backend/register?error=sqlerror3");
@@ -81,7 +92,7 @@ if (isset($_POST['submit'])) {
                             exit();
                         } else {
                             $hashPass = password_hash($pass,  PASSWORD_DEFAULT);
-                            mysqli_stmt_bind_param($stmt, 'sssss', $em, $fn, $ln, $hashPass, $username);
+                            mysqli_stmt_bind_param($stmt, 'ssssss', $em, $fn, $ln, $hashPass, $username, $phone);
                             $this->db->call_function('stmt_execute', $stmt);
                             $register = base_url("index.php/backend/register?register=success");
                             header("Location: $register");

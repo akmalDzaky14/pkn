@@ -144,9 +144,9 @@ class backend extends CI_Controller
         $this->load->database();
         $this->load->view('/backend/tables');
     }
-    public function notifikasi()
+    public function sendKonfirmasi()
     {
         $this->load->database();
-        $this->load->view('/notifikasi');
+        $this->load->view('/backend/includes/sendKonf.inc.php');
     }
 }
