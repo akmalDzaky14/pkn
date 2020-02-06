@@ -63,6 +63,8 @@
             <a class="dropdown-item" href="<?php echo base_url(); ?>index.php/backend/tables?type=Alist">Admin List</a>
             <a class="dropdown-item" href="<?php echo base_url(); ?>index.php/backend/tables?type=Glist">Agent List</a>
             <a class="dropdown-item" href="<?php echo base_url(); ?>index.php/backend/tables?type=Ulist">User List</a>
+            <a class="dropdown-item" href="<?php echo base_url(); ?>index.php/backend/tables?type=Klist">konfirmasi List</a>
+            <a class="dropdown-item" href="<?php echo base_url(); ?>index.php/backend/tables?type=K2list">konfirmasi2 List</a>
         </div>
     </li>
     <li class="nav-item <?php echo $chart; ?>">

@@ -19,6 +19,7 @@
 
   <!-- Custom styles for this template-->
   <link href="<?php echo base_url(); ?>/resources/css/sb-admin.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 
@@ -120,7 +121,6 @@
                           echo '<td>' . $key['kategori'] . '</td>';
                           echo '<td>' . $key['jenis'] . '</td>';
                           echo '<td>' . $key['token'] . '</td>';
-                          echo '<td>' . $key['status'] . '</td>';
                           echo '</tr>';
                         }
                       }
@@ -229,33 +229,120 @@
                                   </tr>
                                 </tfoot>
                                 <tbody>
-                              <?php
-                              $sql = "SELECT * FROM `user_list`;";
-                              $stmt = $this->db->call_function('stmt_init', $conn);
-                              if (!$this->db->call_function('stmt_prepare', $stmt, $sql)) {
-                                $register = base_url("index.php/backend/register?error=sqlerror1");
-                                header("Location: $register");
-                                exit();
-                              } else {
-                                $this->db->call_function('stmt_execute', $stmt);
-                                $result = $this->db->call_function('stmt_get_result', $stmt);
-                                foreach ($result as $key) {
-                                  echo '<tr>';
-                                  echo '<td>' . $key['id'] . '</td>';
-                                  echo '<td>' . $key['nama_depan'] . '</td>';
-                                  echo '<td>' . $key['nama_belakang'] . '</td>';
-                                  echo '<td>' . $key['uid'] . '</td>';
-                                  echo '<td>' . $key['email'] . '</td>';
+                                  <?php
+                                  $sql = "SELECT * FROM `user_list`;";
+                                  $stmt = $this->db->call_function('stmt_init', $conn);
+                                  if (!$this->db->call_function('stmt_prepare', $stmt, $sql)) {
+                                    $register = base_url("index.php/backend/register?error=sqlerror1");
+                                    header("Location: $register");
+                                    exit();
+                                  } else {
+                                    $this->db->call_function('stmt_execute', $stmt);
+                                    $result = $this->db->call_function('stmt_get_result', $stmt);
+                                    foreach ($result as $key) {
+                                      echo '<tr>';
+                                      echo '<td>' . $key['id'] . '</td>';
+                                      echo '<td>' . $key['nama_depan'] . '</td>';
+                                      echo '<td>' . $key['nama_belakang'] . '</td>';
+                                      echo '<td>' . $key['uid'] . '</td>';
+                                      echo '<td>' . $key['email'] . '</td>';
 
-                                  echo '</tr>';
-                                }
-                              }
-                            }
-                          }
-                          echo '<p>no data selected</p>';
-                              ?>
-                                </tbody>
-                              </table>
+                                      echo '</tr>';
+                                    }
+                                  }
+                                } else if ($_GET['type'] == "Klist") {
+                                  ?>
+                                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                      <tr>
+                                        <th>No.</th>
+                                        <th>token_postingan</th>
+                                        <th>Pesan_user</th>
+                                        <th>action</th>
+                                      </tr>
+                                    </thead>
+                                    <tfoot>
+                                      <tr>
+                                        <th>No.</th>
+                                        <th>token_postingan</th>
+                                        <th>Pesan_user</th>
+                                        <th>action</th>
+                                      </tr>
+                                    </tfoot>
+                                    <tbody>
+                                      <?php
+                                      $sql = "SELECT * FROM `konfirmasi`;";
+                                      $stmt = $this->db->call_function('stmt_init', $conn);
+                                      if (!$this->db->call_function('stmt_prepare', $stmt, $sql)) {
+                                        $register = base_url("index.php/backend/register?error=sqlerror1");
+                                        header("Location: $register");
+                                        exit();
+                                      } else {
+                                        $this->db->call_function('stmt_execute', $stmt);
+                                        $result = $this->db->call_function('stmt_get_result', $stmt);
+                                        foreach ($result as $key) {
+                                          echo '<tr>';
+                                          echo '<td>' . $key['id'] . '</td>';
+                                          echo '<td>' . $key['token_postingan'] . '</td>';
+                                          echo '<td>' . $key['pesan_user'] . '</td>';
+                                          echo '<td>' . '<a href="' . base_url("backed/edit/") . '"><button><i class="fa fa-check-square-o" style="font-size:24px;color:green"></i></button>' . '  <button><i class="fa fa-times-rectangle" style="font-size:24px;color:red"></i> .</td>';
+                                          echo '</tr>';
+                                        }
+                                      }
+                                    } else if ($_GET['type'] == "K2list") {
+                                      ?>
+                                      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                          <tr>
+                                            <th>No.</th>
+                                            <th>token_postingan</th>
+                                            <th>token_agent</th>
+                                            <th>pesan_user</th>
+                                            <th>Tanggal</th>
+                                            <th>action</th>
+                                          </tr>
+                                        </thead>
+                                        <tfoot>
+                                          <tr>
+                                            <th>No.</th>
+                                            <th>token_postingan</th>
+                                            <th>token_agent</th>
+                                            <th>pesan_user</th>
+                                            <th>Tanggal</th>
+                                            <th>action</th>
+                                          </tr>
+                                        </tfoot>
+                                        <tbody>
+                                      <?php
+                                      $sql = "SELECT * FROM `konfirmasi2`;";
+                                      $stmt = $this->db->call_function('stmt_init', $conn);
+                                      if (!$this->db->call_function('stmt_prepare', $stmt, $sql)) {
+                                        $register = base_url("index.php/backend/register?error=sqlerror1");
+                                        header("Location: $register");
+                                        exit();
+                                      } else {
+                                        $this->db->call_function('stmt_execute', $stmt);
+                                        $result = $this->db->call_function('stmt_get_result', $stmt);
+                                        foreach ($result as $key) {
+                                          echo '<tr>';
+                                          echo '<td>' . $key['id'] . '</td>';
+                                          echo '<td>' . $key['token_postingan'] . '</td>';
+                                          echo '<td>' . $key['token_agent'] . '</td>';
+                                          echo '<td>' . $key['pesan_user'] . '</td>';
+                                          echo '<td>' . $key['tanggal'] . '</td>';
+                                          echo '<td>' . '<a href="' . base_url("backed/edit/") . '"><button><i class="fa fa-check-square-o" style="font-size:24px;color:green"></i></button>' . '  <button><i class="fa fa-times-rectangle" style="font-size:24px;color:red"></i> .</td>';
+                                          echo '</tr>';
+                                        }
+                                      }
+                                    }
+                                  }
+
+
+                                  echo '<p>no data selected</p>';
+                                      ?>
+                                        </tbody>
+                                      </table>
+
             </div>
           </div>
           <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
