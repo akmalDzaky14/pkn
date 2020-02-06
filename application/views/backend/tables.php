@@ -256,16 +256,20 @@
                                     <thead>
                                       <tr>
                                         <th>No.</th>
-                                        <th>token_postingan</th>
-                                        <th>Pesan_user</th>
+                                        <th>Token Postingan</th>
+                                        <th>Nama User</th>
+                                        <th>Pesan User</th>
+                                        <th>Tanggal</th>
                                         <th>action</th>
                                       </tr>
                                     </thead>
                                     <tfoot>
                                       <tr>
                                         <th>No.</th>
-                                        <th>token_postingan</th>
-                                        <th>Pesan_user</th>
+                                        <th>Token Postingan</th>
+                                        <th>Nama User</th>
+                                        <th>Pesan User</th>
+                                        <th>Tanggal</th>
                                         <th>action</th>
                                       </tr>
                                     </tfoot>
@@ -284,8 +288,13 @@
                                           echo '<tr>';
                                           echo '<td>' . $key['id'] . '</td>';
                                           echo '<td>' . $key['token_postingan'] . '</td>';
+                                          echo '<td>' . $key['nama'] . '</td>';
                                           echo '<td>' . $key['pesan_user'] . '</td>';
-                                          echo '<td>' . '<a href="' . base_url("backed/edit/") . '"><button><i class="fa fa-check-square-o" style="font-size:24px;color:green"></i></button>' . '  <button><i class="fa fa-times-rectangle" style="font-size:24px;color:red"></i> .</td>';
+                                          echo '<td>' . $key['tanggal'] . '</td>';
+                                          echo '<td>' . '<a href="' . base_url("index.php/backend/sendKonfirmasi2?admToken=" . $_SESSION['token'] . "&tokenPosting=" . $key['token_postingan']
+                                            . "&nama=" . $key['nama'] . "&email=" . $key['email'] . "&phone=" . $key['phone'] . "&message=" . $key['pesan_user'] . "&date=" . $key['tanggal']) . '">
+                                            <button><i class="fa fa-check-square-o" style="font-size:24px;color:green"></i></button>';
+                                          echo '  <button><i class="fa fa-times-rectangle" style="font-size:24px;color:red;"></i></td>';
                                           echo '</tr>';
                                         }
                                       }

@@ -149,4 +149,9 @@ class backend extends CI_Controller
         $this->load->database();
         $this->load->view('/backend/includes/sendKonf.inc.php');
     }
+    public function sendKonfirmasi2()
+    {
+        $this->load->database();
+        $this->load->view('/backend/includes/sendKonf2.inc.php');
+    }
 }

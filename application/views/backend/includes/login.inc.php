@@ -69,6 +69,8 @@ if (isset($_POST['login'])) {
                             // session_start();
                             $_SESSION['userID'] = $row['id'];
                             $_SESSION['username'] = $row['uid'];
+                            $_SESSION['token'] = $row['token'];
+                            $_SESSION['phone'] = $row['phone'];
                             $_SESSION['status'] = 'agent';
 
                             $register = base_url("/index.php/backend");
