@@ -55,10 +55,19 @@
     <div class="table-box">
         <div class="table-row table-head">
             <div class="table-cell first-cell">
-                <p></p>
+                <p style="color:white; text-align:center;">Data Property</p>
+            </div>
+        </div>
+
+        <div class="table-row">
+            <div class="table-cell first-cell">
+                <p>Token</p>
             </div>
             <div class="table-cell">
-                <p></p>
+                <p><?php foreach ($result as $key) {
+                        echo $key['token']; ?>
+                        <input type="hidden" value="<?php echo $key['token']; ?>">
+                </p>
             </div>
         </div>
 
@@ -67,9 +76,7 @@
                 <p>Nama properti</p>
             </div>
             <div class="table-cell">
-                <p><?php
-                    foreach ($result as $key) {
-                        echo $key['nama_property']; ?>
+                <p><?php echo $key['nama_property']; ?>
                 </p>
             </div>
         </div>
@@ -174,7 +181,7 @@
         <div class="table-box">
             <div class="table-row table-head">
                 <div class="table-cell first-cell">
-                    <p style-color="#000">Data User</p>
+                    <p style="color:white; text-align:center;">Data User</p>
                 </div>
             </div>
 
@@ -211,38 +218,34 @@
                     <p>No. Telfon</p>
                 </div>
                 <div class="table-cell">
-                    <p><?php echo $_SESSION['phone'];
-                    } ?></p>
+                    <p><?php echo $_SESSION['phone']; ?></p>
                 </div>
             </div>
 
+            <!-- redirect ke kirim data ke database -->
             <div class="table-row">
                 <div class="table-cell first-cell">
-                    <p>Email</p>
-                </div>
-                <div class="table-cell">
-                    <p>08xxxxxxxxxx</p>
-                </div>
-            </div>
-            <div class="table-row">
-                <div class="table-cell first-cell">
-                    <p>tanggal</p>
-                    <input type="date" name="fromDate" id="fromDate">
-                    <p>Pesan</p>
-                    <input class="table-row"></input>
+                    <form action="<?php echo base_url(); ?>index.php/backend/sendKonfirmasi" method="POST">
+                        <input id="datepicker" placeholder="Date" name="date">
+                        <p style="text-align: center;">Pesan</p>
+                        <input class="table-row" name="message">
+                        <input type="hidden" value="<?php echo $_SESSION['name']; ?>" name="nama">
+                        <input type="hidden" value="<?php echo $_SESSION['email']; ?>" name="email">
+                        <input type="hidden" value="<?php echo $_SESSION['phone']; ?>" name="phone">
+                        <input type="hidden" value="<?php echo $key['token']; ?>" name="tokenPosting">
                 </div>
             </div>
-            <div class="table-cell">
-                <p></p>
+            <div class="text-center">
+                <input type="submit" class="boxed-btn4" value="Kirim" name="submit">
+            <?php } else {
+            echo '<div class="table-box"><div class="text-center">';
+            echo 'no user found <br>';
+            echo '<a href="' . base_url() . 'index.php/backend/register">Daftar</a><br></div></div>';
+        } ?>
+            </form>
             </div>
         </div>
-        <!-- redirect ke kirim data ke database -->
-        <div class="col-lg-12">
-            <div class="more_place_btn text-center">
-                <a class="boxed-btn4" href="<?php echo base_url() ?>index.php/home/PPlace">Beli</a>
-            </div>
-        </div>
-        </div>
+
 
 
         <?php include "footer.php" ?>
@@ -292,9 +295,15 @@
         <script src="<?php echo base_url(); ?>/resources/js/jquery.form.js"></script>
         <script src="<?php echo base_url(); ?>/resources/js/jquery.validate.min.js"></script>
         <script src="<?php echo base_url(); ?>/resources/js/mail-script.js"></script>
-
-
         <script src="<?php echo base_url(); ?>/resources/js/main.js"></script>
+        <script>
+            $('#datepicker').datepicker({
+                iconsLibrary: 'fontawesome',
+                icons: {
+                    rightIcon: '<span class="fa fa-caret-down"></span>'
+                }
+            });
+        </script>
 </body>
 
 </html>
