@@ -34,6 +34,9 @@ if (isset($_POST['login'])) {
                     // session_start();
                     $_SESSION['userID'] = $row['id'];
                     $_SESSION['username'] = $row['uid'];
+                    $_SESSION['name'] = $row['nama_depan'] . ' ' . $row['nama_belakang'];
+                    $_SESSION['email'] = $row['email'];
+                    $_SESSION['phone'] = $row['phone'];
                     $_SESSION['status'] = 'user';
 
                     $register = base_url("/index.php?login=success");
