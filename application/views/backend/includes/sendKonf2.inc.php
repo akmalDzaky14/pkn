@@ -24,9 +24,10 @@ if (empty($date)) {
         // masih error di sini
         mysqli_stmt_bind_param($stmt, 'sssssss', $agenToken, $token, $nama, $email, $phone, $message, $date);
         $this->db->call_function('stmt_execute', $stmt);
-        $sql = "DELETE FROM pkn.konfirmasi WHERE token=" . $token;
+        $sql = "DELETE FROM konfirmasi WHERE phone = $phone";
         $stmt = $this->db->call_function('stmt_init', $conn);
         if (!$this->db->call_function('stmt_prepare', $stmt, $sql)) {
+            // echo ("Error description: <br>" . $conn->error);
             $register = base_url("index.php/backend/tables?type=Klist&Upload=Failed2");
             header("Location: $register");
             exit();

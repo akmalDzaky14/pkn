@@ -338,7 +338,7 @@
                                           echo '<td>' . $key['token_postingan'] . '</td>';
                                           echo '<td>' . $key['token_agent'] . '</td>';
                                           echo '<td>' . $key['pesan_user'] . '</td>';
-                                          echo '<td>' . $key['tanggal'] . '</td>';
+                                          echo '<td>' . $key['date'] . '</td>';
                                           echo '<td>' . '<a href="' . base_url("backed/edit/") . '"><button><i class="fa fa-check-square-o" style="font-size:24px;color:green"></i></button>' . '  <button><i class="fa fa-times-rectangle" style="font-size:24px;color:red"></i> .</td>';
                                           echo '</tr>';
                                         }
