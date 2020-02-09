@@ -13,6 +13,7 @@ if (isset($_POST['submit'])) {
     $msg = $_POST['pesan'];
     $kt = $_POST['Kategori'];
     $jns = $_POST['Jenis'];
+    $status = 'Tersedia';
 
     if (empty($np) || empty($lt) || empty($lb) || empty($jkt) || empty($jkm) || empty($dl
         || empty($al) || empty($har) || empty($msg) || empty($kt) || empty($jns))) {
@@ -45,14 +46,14 @@ if (isset($_POST['submit'])) {
         }
         $Token = $id1 . random_int(100, 999) . $id2;
         //upload form register ke database
-        $sql = "INSERT INTO posting_list (nama_property,luas_tanah, luas_bangunan ,jk_tidur , jk_mandi, daya_listrik, alamat, harga, pesan, kategori, jenis, token) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+        $sql = "INSERT INTO posting_list (nama_property,luas_tanah, luas_bangunan ,jk_tidur , jk_mandi, daya_listrik, alamat, harga, pesan, kategori, jenis, token, status) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $stmt = $this->db->call_function('stmt_init', $conn);
         if (!$this->db->call_function('stmt_prepare', $stmt, $sql)) {
             $register = base_url("index.php/backend/uploadProduct?upload=failed1");
             header("Location: $register");
             exit();
         } else {
-            mysqli_stmt_bind_param($stmt, 'siiiiisissss', $np, $lt, $lb, $jkt, $jkm, $dl, $al, $har, $msg, $kt, $jns, $Token);
+            mysqli_stmt_bind_param($stmt, 'siiiiisisssss', $np, $lt, $lb, $jkt, $jkm, $dl, $al, $har, $msg, $kt, $jns, $Token, $status);
             $this->db->call_function('stmt_execute', $stmt);
             $register = base_url("index.php/backend/uploadProduct?upload=success");
             header("Location: $register");

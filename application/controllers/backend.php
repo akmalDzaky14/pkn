@@ -154,4 +154,9 @@ class backend extends CI_Controller
         $this->load->database();
         $this->load->view('/backend/includes/sendKonf2.inc.php');
     }
+    public function sendTerjual()
+    {
+        $this->load->database();
+        $this->load->view('/backend/includes/sendTerjual.inc.php');
+    }
 }
