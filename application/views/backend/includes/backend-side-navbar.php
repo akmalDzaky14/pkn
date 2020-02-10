@@ -42,9 +42,8 @@
                     <a class="dropdown-item" href="<?php echo base_url(); ?>index.php/backend/adminReg">Register Admin</a>
                     <a class="dropdown-item" href="<?php echo base_url(); ?>index.php/backend/agentReg">Register Agent</a>
                     <a class="dropdown-item" href="<?php echo base_url(); ?>index.php/backend/forgot">Forgot Password</a>
-                    <div class="dropdown-divider"></div>
-                    <h6 class="dropdown-header">Other Pages:</h6>
-                    <a class="dropdown-item" href="<?php echo base_url(); ?>index.php/backend/uploadProduct">Upload Product</a>
+                    <!-- <div class="dropdown-divider"></div> -->
+                    <!-- <h6 class="dropdown-header">Other Pages:</h6> -->
                 </div>
             </li>
         <?php

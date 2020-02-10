@@ -59,6 +59,7 @@
               $ty = &$_GET['type'];
               if ($ty) {
                 if ($_GET['type'] == "Plist") { ?>
+                  <a href="<?php echo base_url(); ?>index.php/backend/uploadProduct" class="btn btn-primary">Upload New</a>
                   <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                       <tr>
@@ -295,7 +296,7 @@
                           echo '<td>' . $key['nama'] . '</td>';
                           echo '<td>' . $key['pesan_user'] . '</td>';
                           echo '<td>' . $key['tanggal'] . '</td>';
-                          echo '<td>' . '<a href="' . base_url("index.php/backend/sendKonfirmasi2?admToken=" . $_SESSION['token'] . "&tokenPosting=" . $key['token_postingan']. "&nama=" . $key['nama'] . "&email=" . $key['email'] . "&phone=" . $key['phone'] . "&message=" . $key['pesan_user'] . "&date=" . $key['tanggal']) . '">
+                          echo '<td>' . '<a href="' . base_url("index.php/backend/sendKonfirmasi2?admToken=" . $_SESSION['token'] . "&tokenPosting=" . $key['token_postingan'] . "&nama=" . $key['nama'] . "&email=" . $key['email'] . "&phone=" . $key['phone'] . "&message=" . $key['pesan_user'] . "&date=" . $key['tanggal']) . '">
                           <button><i class="fa fa-check-square-o" style="font-size:24px;color:green"></i></button>';
                           echo '  <button><i class="fa fa-times-rectangle" style="font-size:24px;color:red;"></i></td>';
                           echo '</tr>';
