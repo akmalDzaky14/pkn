@@ -85,12 +85,13 @@ class backend extends CI_Controller
     }
     public function uploadProductReq()
     {
+        $this->load->database();
         $this->load->helper('form');
         $config['upload_path']          = './gambar';
-        $config['allowed_types']        = 'gif|jpg|png'; // file yang di perbolehkan 
-        $config['max_size']             = 1000; // maksimal ukuran
-        $config['max_width']            = 2000; //lebar maksimal
-        $config['max_height']           = 1000;  //tinggi maksimal
+        $config['allowed_types']        = 'gif|jpg|png|jpeg'; // file yang di perbolehkan 
+        $config['max_size']             = 10000; // maksimal ukuran
+        $config['max_width']            = 20000; //lebar maksimal
+        $config['max_height']           = 10000;  //tinggi maksimal
 
         $this->load->library('upload', $config);
 
@@ -99,10 +100,9 @@ class backend extends CI_Controller
             $this->load->view('/backend/upload-product', $error);
         } else {
             $data = array('upload_data' => $this->upload->data());
-            $this->load->view('./v_upload_sukses.php', $data);
+            $this->load->view('/backend/includes/upload-product.inc.php', $data);
+            // $this->load->view('/v_upload_sukses.php', $data);
         }
-        $this->load->database();
-        $this->load->view('/backend/includes/upload-product.inc.php');
         function __construct()
         {
             parent::__construct();

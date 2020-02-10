@@ -57,13 +57,19 @@
     <div class="table-box">
         <div class="table-row table-head">
             <div class="table-cell first-cell">
-                <p></p>
+                <p style="color:white; text-align:center;">Detail Property</p>
+            </div>
+        </div>
+
+        <div class="table-row">
+            <div class="table-cell first-cell">
+                <p>Token</p>
             </div>
             <div class="table-cell">
-                <p></p>
-            </div>
-            <div class="table-cell last-cell">
-                <p></p>
+                <p><?php foreach ($result as $key) {
+                        echo $key['token']; ?>
+                        <input type="hidden" value="<?php echo $key['token']; ?>">
+                </p>
             </div>
         </div>
 
@@ -72,101 +78,100 @@
                 <p>Nama properti</p>
             </div>
             <div class="table-cell">
-                <p><?php
-                    foreach ($result as $key) {
-                        echo $key['nama_property'];
-
-                    ?>
+                <p><?php echo $key['nama_property']; ?>
                 </p>
             </div>
-            <div class="table-cell last-cell">
-                <a href=""><?php echo $key['luas_tanah'];
-                        } ?></a>
+        </div>
+
+        <div class="table-row">
+            <div class="table-cell first-cell">
+                <p>Harga</p>
+            </div>
+            <div class="table-cell">
+                <p><?php echo 'Rp. ' . $key['harga'];
+                    ?></p>
             </div>
         </div>
 
         <div class="table-row">
             <div class="table-cell first-cell">
-                <p>Luas rumah</p>
+                <p>Jenis</p>
             </div>
             <div class="table-cell">
-                <p>120 x 90</p>
-            </div>
-            <div class="table-cell last-cell">
-                <a href=""></a>
+                <p><?php echo $key['jenis']; ?></p>
             </div>
         </div>
 
         <div class="table-row">
             <div class="table-cell first-cell">
-                <p>harga</p>
+                <p>Kategori</p>
             </div>
             <div class="table-cell">
-                <p>1.5m</p>
-            </div>
-            <div class="table-cell last-cell">
-                <a href=""></a>
+                <p><?php echo $key['kategori']; ?></p>
             </div>
         </div>
 
         <div class="table-row">
             <div class="table-cell first-cell">
-                <p>IG</p>
+                <p>Luas tanah</p>
             </div>
             <div class="table-cell">
-                <p>nani</p>
-            </div>
-            <div class="table-cell last-cell">
-                <a href=""></a>
+                <p><?php echo $key['luas_tanah']; ?></p>
             </div>
         </div>
 
         <div class="table-row">
             <div class="table-cell first-cell">
-                <p>nomer kontak</p>
+                <p>Luas Bangunan</p>
             </div>
             <div class="table-cell">
-                <p>08xxxxxxxxxx</p>
+                <p><?php echo $key['luas_bangunan']; ?></p>
             </div>
-            <div class="table-cell last-cell">
-                <a href=""></a>
+        </div>
+
+        <div class="table-row">
+            <div class="table-cell first-cell">
+                <p>Jumlah Kamar Tidur</p>
+            </div>
+            <div class="table-cell">
+                <p><?php echo $key['jk_tidur']; ?></p>
+            </div>
+        </div>
+
+        <div class="table-row">
+            <div class="table-cell first-cell">
+                <p>Jumlah Kamar Mandi</p>
+            </div>
+            <div class="table-cell">
+                <p><?php echo $key['jk_mandi']; ?></p>
             </div>
         </div>
 
 
         <div class="table-row">
             <div class="table-cell first-cell">
-                <p>Detail</p>
+                <p>Daya Listrik</p>
             </div>
             <div class="table-cell">
-                <p></p>
-            </div>
-            <div class="table-cell last-cell">
-                <a href=""></a>
+                <p><?php echo $key['daya_listrik']; ?></p>
             </div>
         </div>
 
         <div class="table-row">
             <div class="table-cell first-cell">
-                <p>Registartion Form </p>
+                <p>Alamat</p>
             </div>
             <div class="table-cell">
-                <p></p>
-            </div>
-            <div class="table-cell last-cell">
-                <a href=""></a>
+                <p><?php echo $key['alamat']; ?></p>
             </div>
         </div>
 
         <div class="table-row">
             <div class="table-cell first-cell">
-                <p>area</p>
-            </div>
-            <div class="table-cell">
-                <p></p>
-            </div>
-            <div class="table-cell last-cell">
-                <a href=""></a>
+                <p>Pesan</p>
+                <p style="text-align: center;">
+                <?php echo $key['pesan'];
+                    } ?></p>
             </div>
         </div>
         <div class="col-lg-12">
