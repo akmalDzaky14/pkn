@@ -63,7 +63,7 @@
                 ?>
                         <div class='col-lg-4 col-md-6'>
                             <div class='single_place'>
-                                <div class='thumb'><img src='<?php echo base_url(); ?>/resources/img/place/6.png' alt=''><a href='<?php echo base_url('index.php/home/input?token=') . $key['token']; ?>' class='prise'>Rp. <?php echo $key['harga']; ?></a></div>
+                                <div class='thumb'><img src='<?php echo base_url("/gambar/" . $key['imgPath']); ?>' alt=''><a href='<?php echo base_url('index.php/home/input?token=') . $key['token']; ?>' class='prise'>Rp. <?php echo $key['harga']; ?></a></div>
                                 <div class='place_info'><a href='<?php echo base_url('index.php/home/input?token=') . $key['token']; ?>'>
                                         <h3><?php echo $key['nama_property']; ?></h3>
                                     </a>

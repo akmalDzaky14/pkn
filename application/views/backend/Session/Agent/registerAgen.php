@@ -70,6 +70,7 @@
                                     $ln = &$_GET['ln'];
                                     $uid = &$_GET['uid'];
                                     $em = &$_GET['email'];
+                                    $phone = &$_GET['phone'];
                                     ?>
                                     <input value="<?php echo $fn; ?>" type="text" name="firstname" id="firstName" class="form-control" placeholder="First name" required="required" autofocus="autofocus">
                                     <label for="firstName">First name</label>
@@ -93,6 +94,12 @@
                         <div class="form-label-group">
                             <input value="<?php echo $em; ?>" type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required="required">
                             <label for="inputEmail">Email address</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-label-group">
+                            <input value="<?php echo $phone; ?>" type="text" name="phoneNumber" id="inputPhone" class="form-control" placeholder="Nomor Telfon" required="required">
+                            <label for="inputPhone">Nomor Telfon</label>
                         </div>
                     </div>
                     <div class="form-group">

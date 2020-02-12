@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-
+session_start();
 class Home extends CI_Controller
 {
     public function index()
@@ -63,5 +63,10 @@ class Home extends CI_Controller
     {
         $this->load->database();
         $this->load->view('popular-place');
+    }
+    public function konfirmasi()
+    {
+        $this->load->database();
+        $this->load->view('konfirmasi');
     }
 }

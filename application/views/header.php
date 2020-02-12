@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <header>
     <div class="header-area ">
         <div id="sticky-header" class="main-header-area">
